@@ -1,0 +1,115 @@
+/* Azurite Stack — Layered Card Stacks (Shadow & Tonal Depth in 4 Directions) */
+
+.az-stack {
+  --az-stack-step-x: 0px;
+  --az-stack-step-y: -14px;
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.az-stack--top {
+  --az-stack-step-x: 0px;
+  --az-stack-step-y: -14px;
+  margin-top: 28px;
+}
+
+.az-stack--bottom {
+  --az-stack-step-x: 0px;
+  --az-stack-step-y: 14px;
+  margin-bottom: 28px;
+}
+
+.az-stack--start {
+  --az-stack-step-x: -16px;
+  --az-stack-step-y: 0px;
+  margin-left: 32px;
+}
+
+.az-stack--end {
+  --az-stack-step-x: 16px;
+  --az-stack-step-y: 0px;
+  margin-right: 32px;
+}
+
+.az-stack__layer {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--az-radius-xl);
+  box-sizing: border-box;
+  transition: transform var(--az-duration-surface-enter) var(--az-ease-surface-enter),
+    box-shadow var(--az-duration-surface-enter) var(--az-ease-surface-enter),
+    background-color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+/* Front Layer */
+.az-stack__layer--front {
+  padding: var(--az-space-gutter-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--az-color-surface);
+  border: 1px solid var(--az-color-outline-variant);
+}
+
+/* Depth Methodology 01: Shadow-Based Elevation */
+.az-stack--shadow .az-stack__layer--back-2 {
+  background: var(--az-color-surface);
+  border: 1px solid var(--az-color-outline-variant);
+  box-shadow: 0 8px 20px -6px rgba(15, 23, 42, 0.07);
+}
+
+.az-stack--shadow .az-stack__layer--back-1 {
+  background: var(--az-color-surface);
+  border: 1px solid var(--az-color-outline-variant);
+  box-shadow: 0 10px 24px -6px rgba(15, 23, 42, 0.08);
+}
+
+.az-stack--shadow .az-stack__layer--front {
+  box-shadow: 0 14px 32px -8px rgba(15, 23, 42, 0.10);
+}
+
+[data-theme='dark'] .az-stack--shadow .az-stack__layer,
+.dark .az-stack--shadow .az-stack__layer {
+  box-shadow: var(--az-shadow-md);
+}
+
+/* Depth Methodology 02: Tonal Contrast (Zero Drop Shadows) */
+.az-stack--tonal .az-stack__layer {
+  box-shadow: none;
+}
+
+.az-stack--tonal .az-stack__layer--back-2 {
+  background: var(--az-color-surface-container-high);
+  border: 0;
+}
+
+.az-stack--tonal .az-stack__layer--back-1 {
+  background: var(--az-color-primary-container);
+  border: 0;
+}
+
+.az-stack--tonal .az-stack__layer--front {
+  background: var(--az-color-surface);
+  border: 1px solid var(--az-color-outline-variant);
+}
+
+/* Interactive cycle hover spread */
+.az-stack--hover-expand:hover .az-stack__layer--back-1 {
+  transform: translate(calc(var(--az-stack-step-x) * 1.18), calc(var(--az-stack-step-y) * 1.18)) scale(0.955);
+}
+
+.az-stack--hover-expand:hover .az-stack__layer--back-2 {
+  transform: translate(calc(var(--az-stack-step-x) * 2.25), calc(var(--az-stack-step-y) * 2.25)) scale(0.905);
+}
+
+.az-stack--interactive {
+  cursor: pointer;
+}
+
+.az-stack--interactive:focus-visible {
+  outline: none;
+  box-shadow: var(--az-focus-ring);
+  border-radius: var(--az-radius-xl);
+}
+

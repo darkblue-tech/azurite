@@ -1,0 +1,201 @@
+/* Azurite Carousel — Horizontal, Vertical, Centered & Full-Bleed Scroll Snap */
+
+.az-carousel {
+  --az-carousel-gap: var(--az-space-gutter-lg);
+  --az-carousel-snap: start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--az-space-gutter-lg);
+  width: 100%;
+}
+
+.az-carousel--gap-sm { --az-carousel-gap: var(--az-space-gutter-sm); }
+.az-carousel--gap-md { --az-carousel-gap: var(--az-space-gutter-md); }
+.az-carousel--gap-lg { --az-carousel-gap: var(--az-space-gutter-lg); }
+.az-carousel--gap-xl { --az-carousel-gap: var(--az-space-gutter-xl); }
+
+.az-carousel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--az-space-gutter-md);
+}
+
+.az-carousel__title {
+  margin: 0;
+  font-size: var(--az-text-headline-sm-size);
+  line-height: var(--az-text-headline-sm-line);
+  font-weight: var(--az-text-headline-sm-weight);
+  letter-spacing: var(--az-text-headline-sm-tracking);
+  color: var(--az-color-on-surface);
+}
+
+.az-carousel__controls {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--az-space-gutter-sm);
+}
+
+.az-carousel__btn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--az-radius-full);
+  border: 1px solid var(--az-color-outline-variant);
+  background: var(--az-color-surface);
+  color: var(--az-color-on-surface);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+    border-color var(--az-duration-state-change) var(--az-ease-state-change),
+    opacity var(--az-duration-state-change) var(--az-ease-state-change),
+    transform var(--az-duration-spring-press) var(--az-ease-spring-press);
+}
+
+.az-carousel__btn:hover:not(:disabled) {
+  background: var(--az-color-surface-container-low);
+}
+
+.az-carousel__btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.az-carousel__btn:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+.az-carousel__btn:focus-visible {
+  outline: none;
+  box-shadow: var(--az-focus-ring);
+}
+
+.az-carousel__track {
+  display: flex;
+  gap: var(--az-carousel-gap);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.az-carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.az-carousel__track > * {
+  scroll-snap-align: var(--az-carousel-snap);
+}
+
+.az-carousel--center {
+  --az-carousel-snap: center;
+}
+
+.az-carousel--center .az-carousel__track {
+  padding-inline: var(--az-carousel-center-pad, max(0px, calc(50% - 220px)));
+  scroll-padding-inline: var(--az-carousel-center-pad, 0px);
+}
+
+.az-carousel--end {
+  --az-carousel-snap: end;
+}
+
+.az-carousel--full-width .az-carousel__track {
+  gap: 0;
+}
+
+.az-carousel--full-width .az-carousel__track > * {
+  flex: 0 0 100%;
+  width: 100%;
+}
+
+.az-carousel--half-width .az-carousel__track > * {
+  flex: 0 0 calc(50% - var(--az-carousel-gap) / 2);
+  min-width: 280px;
+}
+
+.az-carousel--vertical .az-carousel__track {
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  height: var(--az-carousel-height, 420px);
+}
+
+.az-carousel--vertical .az-carousel__track > * {
+  flex: 0 0 var(--az-carousel-height, 420px);
+  height: var(--az-carousel-height, 420px);
+}
+
+/* CarouselItem */
+.az-carousel-item {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.az-carousel-item__frame {
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--az-radius-xl);
+  border: 1px solid var(--az-color-outline-variant);
+  background: var(--az-color-surface-container-low);
+}
+
+.az-carousel--full-bleed .az-carousel-item__frame {
+  border-radius: 0;
+  border-inline: 0;
+}
+
+.az-carousel--vertical .az-carousel-item__frame {
+  flex: 1;
+  min-height: 0;
+}
+
+.az-carousel-item__media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.az-carousel-item__caption {
+  margin: var(--az-space-gutter-md) 0 0;
+  font-size: var(--az-text-title-md-size);
+  line-height: var(--az-text-title-md-line);
+  font-weight: var(--az-text-title-md-weight);
+  color: var(--az-color-on-surface);
+}
+
+.az-carousel--full-bleed .az-carousel-item__caption {
+  padding-inline: var(--az-space-gutter-lg);
+}
+
+.az-carousel__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.az-carousel__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border-radius: var(--az-radius-full);
+  border: 0;
+  background: var(--az-color-outline);
+  cursor: pointer;
+  transition: width var(--az-duration-state-change) var(--az-ease-state-change),
+    background-color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-carousel__dot--active {
+  width: 24px;
+  background: var(--az-color-primary);
+}
+

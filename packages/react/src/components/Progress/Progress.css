@@ -1,0 +1,180 @@
+/* Linear Progress */
+.az-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  font-family: var(--az-font-sans);
+}
+
+.az-progress__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.az-progress__label {
+  font-size: var(--az-text-label-md-size);
+  line-height: var(--az-text-label-md-line);
+  font-weight: var(--az-text-label-md-weight);
+  color: var(--az-color-on-surface);
+}
+
+.az-progress__value {
+  font-size: var(--az-text-label-md-size);
+  line-height: var(--az-text-label-md-line);
+  font-weight: var(--az-text-label-md-weight);
+  font-variant-numeric: tabular-nums;
+  color: var(--az-color-primary);
+}
+
+.az-progress__value--zero {
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-progress__track {
+  position: relative;
+  width: 100%;
+  border-radius: var(--az-radius-full);
+  background-color: var(--az-color-surface-container-high);
+  overflow: hidden;
+}
+
+.az-progress--track-tinted .az-progress__track {
+  background-color: var(--az-color-primary-container);
+}
+
+.az-progress--xs .az-progress__track { height: 4px; }
+.az-progress--sm .az-progress__track { height: 6px; }
+.az-progress--md .az-progress__track { height: 10px; }
+.az-progress--lg .az-progress__track { height: 14px; }
+
+.az-progress__bar {
+  height: 100%;
+  border-radius: var(--az-radius-full);
+  transition: width 260ms var(--az-ease-surface-enter),
+              background-color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-progress__bar--indeterminate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 38%;
+  animation: az-indeterminate-slide 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.az-progress--tone-primary .az-progress__bar { background-color: var(--az-color-primary); }
+.az-progress--tone-secondary .az-progress__bar { background-color: var(--az-color-secondary); }
+.az-progress--tone-tertiary .az-progress__bar { background-color: var(--az-color-tertiary); }
+.az-progress--tone-success .az-progress__bar { background-color: var(--az-color-success); }
+.az-progress--tone-warning .az-progress__bar { background-color: var(--az-color-warning); }
+.az-progress--tone-error .az-progress__bar { background-color: var(--az-color-error); }
+
+/* Radial Progress */
+.az-radial {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--az-font-sans);
+}
+
+.az-radial__circle-box {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--az-radius-full);
+  flex-shrink: 0;
+}
+
+.az-radial--filled .az-radial__circle-box {
+  background-color: var(--az-color-primary);
+  border: 4px solid var(--az-color-primary-container);
+  color: var(--az-color-on-primary);
+  box-shadow: var(--az-shadow-sm);
+}
+
+.az-radial--tonal .az-radial__circle-box {
+  background-color: var(--az-color-primary-container);
+  border: 2px solid var(--az-color-primary);
+  color: var(--az-color-on-primary-container);
+}
+
+.az-radial__svg {
+  transform: rotate(-90deg);
+  display: block;
+}
+
+.az-radial__svg--indeterminate {
+  animation: az-spin 1.1s linear infinite;
+}
+
+.az-radial__track-stroke {
+  stroke: var(--az-color-outline-variant);
+}
+
+.az-radial--filled .az-radial__track-stroke {
+  stroke: var(--az-color-on-primary);
+  stroke-opacity: 0.22;
+}
+
+.az-radial--tonal .az-radial__track-stroke {
+  stroke: var(--az-color-primary);
+  stroke-opacity: 0.18;
+}
+
+.az-radial__bar-stroke {
+  transition: stroke-dashoffset 280ms var(--az-ease-surface-enter),
+              stroke var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-radial--tone-primary .az-radial__bar-stroke { stroke: var(--az-color-primary); }
+.az-radial--tone-tertiary .az-radial__bar-stroke { stroke: var(--az-color-tertiary); }
+.az-radial--tone-secondary .az-radial__bar-stroke { stroke: var(--az-color-secondary); }
+.az-radial--tone-success .az-radial__bar-stroke { stroke: var(--az-color-success); }
+.az-radial--tone-warning .az-radial__bar-stroke { stroke: var(--az-color-warning); }
+.az-radial--tone-error .az-radial__bar-stroke { stroke: var(--az-color-error); }
+
+.az-radial--filled .az-radial__bar-stroke {
+  stroke: var(--az-color-on-primary);
+}
+
+.az-radial--tonal .az-radial__bar-stroke {
+  stroke: var(--az-color-primary);
+}
+
+.az-radial__value {
+  position: absolute;
+  font-size: var(--az-text-label-lg-size);
+  line-height: var(--az-text-label-lg-line);
+  font-weight: var(--az-text-label-lg-weight);
+  font-variant-numeric: tabular-nums;
+  color: var(--az-color-on-surface);
+}
+
+.az-radial--tone-primary .az-radial__value--primary-accent {
+  color: var(--az-color-primary);
+}
+
+.az-radial--filled .az-radial__value {
+  color: var(--az-color-on-primary);
+}
+
+.az-radial--tonal .az-radial__value {
+  color: var(--az-color-on-primary-container);
+}
+
+.az-radial__caption {
+  font-size: var(--az-text-label-sm-size);
+  line-height: var(--az-text-label-sm-line);
+  font-weight: var(--az-text-label-sm-weight);
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-radial--caption-primary .az-radial__caption {
+  color: var(--az-color-primary);
+}
+

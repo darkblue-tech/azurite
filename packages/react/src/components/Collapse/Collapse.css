@@ -1,0 +1,121 @@
+.az-collapse {
+  width: 100%;
+  align-self: start;
+  background-color: var(--az-color-surface);
+  overflow: hidden;
+  font-family: var(--az-font-sans);
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+              border-color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-collapse--framed {
+  border-radius: var(--az-radius-lg);
+  border: 1px solid var(--az-color-outline-variant);
+}
+
+.az-collapse--force-open {
+  border-color: rgba(10, 54, 209, 0.35);
+}
+
+.az-collapse--force-closed {
+  background-color: var(--az-color-surface-container);
+}
+
+.az-collapse__trigger {
+  width: 100%;
+  padding: 16px 24px;
+  border: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--az-space-gutter-md);
+  text-align: left;
+  cursor: pointer;
+  color: var(--az-color-on-surface);
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-collapse__trigger:hover:not(:disabled):not([aria-disabled='true']) {
+  background-color: var(--az-color-surface-container-low);
+}
+
+.az-collapse__trigger:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--az-color-primary);
+}
+
+.az-collapse--force-open .az-collapse__trigger {
+  cursor: default;
+  background-color: rgba(238, 242, 255, 0.35);
+}
+[data-theme='dark'] .az-collapse--force-open .az-collapse__trigger,
+.dark .az-collapse--force-open .az-collapse__trigger {
+  background-color: rgba(0, 53, 179, 0.2);
+}
+
+.az-collapse--force-closed .az-collapse__trigger {
+  cursor: not-allowed;
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-collapse__title-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--az-space-gutter-sm);
+  min-width: 0;
+}
+
+.az-collapse__title {
+  font-size: var(--az-text-title-md-size);
+  line-height: var(--az-text-title-md-line);
+  font-weight: var(--az-text-title-md-weight);
+  color: inherit;
+}
+
+.az-collapse__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--az-color-on-surface-variant);
+  flex-shrink: 0;
+  transition: transform var(--az-duration-state-change) var(--az-ease-state-change),
+              color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-collapse--force-open .az-collapse__icon {
+  color: var(--az-color-primary);
+}
+
+.az-collapse__icon--rotated {
+  transform: rotate(180deg);
+}
+
+/* Smooth Grid-Row Panel Animation */
+.az-collapse__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition: grid-template-rows 220ms var(--az-ease-surface-enter),
+              opacity 180ms var(--az-ease-state-change),
+              visibility 220ms;
+}
+
+.az-collapse__panel--open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+}
+
+.az-collapse__panel-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.az-collapse__content {
+  padding: 12px 24px 20px;
+  font-size: var(--az-text-body-md-size);
+  line-height: var(--az-text-body-md-line);
+  color: var(--az-color-on-surface-variant);
+}

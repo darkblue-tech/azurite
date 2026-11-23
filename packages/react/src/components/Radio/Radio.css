@@ -1,0 +1,204 @@
+.az-rb-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--az-space-gutter-sm);
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--az-font-sans);
+}
+
+.az-rb-label--with-desc {
+  align-items: flex-start;
+  gap: var(--az-space-gutter-md);
+}
+
+.az-rb-label--disabled {
+  cursor: not-allowed;
+}
+
+.az-rb-ring {
+  --az-rb-stroke: var(--az-color-outline);
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 0;
+  box-shadow: inset 0 0 0 1px var(--az-rb-stroke);
+  background-color: var(--az-color-surface);
+  color: var(--az-color-on-primary);
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+              color var(--az-duration-state-change) var(--az-ease-state-change),
+              box-shadow var(--az-duration-state-change) var(--az-ease-state-change),
+              transform var(--az-duration-spring-press) var(--az-ease-spring-press);
+}
+
+.az-rb-label--with-desc .az-rb-ring {
+  margin-top: 2px;
+}
+
+.az-rb-label:not(.az-rb-label--disabled):active .az-rb-ring {
+  transform: scale(0.92);
+}
+
+.az-rb-input:focus-visible + .az-rb-ring {
+  box-shadow: var(--az-focus-ring), inset 0 0 0 1px var(--az-rb-stroke);
+}
+
+/* Sizes */
+.az-rb-ring--xs { width: 14px; height: 14px; }
+.az-rb-ring--sm { width: 16px; height: 16px; }
+.az-rb-ring--md { width: 20px; height: 20px; }
+.az-rb-ring--lg { width: 24px; height: 24px; }
+.az-rb-ring--xl { width: 28px; height: 28px; }
+
+.az-rb-dot {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  display: block;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: currentColor;
+  opacity: 0;
+  transform: scale(0.35);
+  pointer-events: none;
+  transition: opacity var(--az-duration-state-change) var(--az-ease-state-change),
+              transform 180ms var(--az-ease-spring-press);
+}
+
+.az-rb-ring--xs .az-rb-dot { width: 6px; height: 6px; }
+.az-rb-ring--sm .az-rb-dot { width: 6px; height: 6px; }
+.az-rb-ring--md .az-rb-dot { width: 8px; height: 8px; }
+.az-rb-ring--lg .az-rb-dot { width: 10px; height: 10px; }
+.az-rb-ring--xl .az-rb-dot { width: 12px; height: 12px; }
+
+[data-state='selected'] .az-rb-dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Selected Solid Tones */
+[data-state='selected'] .az-rb-ring--solid.az-rb-ring--tone-primary {
+  --az-rb-stroke: var(--az-color-primary);
+  background-color: var(--az-color-primary);
+  color: var(--az-color-on-primary);
+}
+[data-state='selected'] .az-rb-ring--solid.az-rb-ring--tone-secondary {
+  --az-rb-stroke: var(--az-color-secondary);
+  background-color: var(--az-color-secondary);
+  color: var(--az-color-on-secondary);
+}
+[data-state='selected'] .az-rb-ring--solid.az-rb-ring--tone-tertiary {
+  --az-rb-stroke: var(--az-color-on-tertiary-container);
+  background-color: var(--az-color-on-tertiary-container);
+  color: var(--az-color-on-primary);
+}
+[data-state='selected'] .az-rb-ring--solid.az-rb-ring--tone-neutral {
+  --az-rb-stroke: var(--az-color-on-surface);
+  background-color: var(--az-color-on-surface);
+  color: var(--az-color-surface);
+}
+[data-state='selected'] .az-rb-ring--solid.az-rb-ring--tone-error {
+  --az-rb-stroke: var(--az-color-error);
+  background-color: var(--az-color-error);
+  color: var(--az-color-on-error);
+}
+[data-state='selected'] .az-rb-ring--solid.az-rb-ring--tone-success {
+  --az-rb-stroke: var(--az-color-success);
+  background-color: var(--az-color-success);
+  color: var(--az-color-on-success);
+}
+
+/* Selected Soft Tones */
+[data-state='selected'] .az-rb-ring--soft.az-rb-ring--tone-primary {
+  --az-rb-stroke: var(--az-color-primary);
+  background-color: var(--az-color-primary-container);
+  color: var(--az-color-on-primary-container);
+}
+[data-state='selected'] .az-rb-ring--soft.az-rb-ring--tone-secondary {
+  --az-rb-stroke: var(--az-color-outline);
+  background-color: var(--az-color-secondary-container);
+  color: var(--az-color-on-secondary-container);
+}
+[data-state='selected'] .az-rb-ring--soft.az-rb-ring--tone-tertiary {
+  --az-rb-stroke: var(--az-color-tertiary);
+  background-color: var(--az-color-tertiary-container);
+  color: var(--az-color-on-tertiary-container);
+}
+[data-state='selected'] .az-rb-ring--soft.az-rb-ring--tone-neutral {
+  --az-rb-stroke: var(--az-color-outline);
+  background-color: var(--az-color-surface-container-high);
+  color: var(--az-color-on-surface);
+}
+[data-state='selected'] .az-rb-ring--soft.az-rb-ring--tone-error {
+  --az-rb-stroke: var(--az-color-error);
+  background-color: var(--az-color-error-container);
+  color: var(--az-color-on-error-container);
+}
+[data-state='selected'] .az-rb-ring--soft.az-rb-ring--tone-success {
+  --az-rb-stroke: var(--az-color-success-border);
+  background-color: var(--az-color-success-container);
+  color: var(--az-color-on-success-container);
+}
+
+/* Disabled States */
+.az-rb-label--disabled[data-state='unselected'] .az-rb-ring {
+  --az-rb-stroke: var(--az-color-outline-variant);
+  background-color: var(--az-color-surface-container);
+}
+.az-rb-label--disabled[data-state='selected'] .az-rb-ring {
+  --az-rb-stroke: var(--az-color-outline);
+  background-color: var(--az-color-surface-container-high);
+  color: var(--az-color-on-surface-variant);
+}
+
+/* Text */
+.az-rb-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.az-rb-title {
+  color: var(--az-color-on-surface);
+  font-size: var(--az-text-body-md-size);
+  line-height: var(--az-text-body-md-line);
+  font-weight: var(--az-text-body-md-weight);
+}
+
+.az-rb-label--size-xs .az-rb-title,
+.az-rb-label--size-sm .az-rb-title {
+  font-size: var(--az-text-label-md-size);
+  line-height: var(--az-text-label-md-line);
+  font-weight: var(--az-text-label-md-weight);
+}
+.az-rb-label--size-lg .az-rb-title {
+  font-size: var(--az-text-title-md-size);
+  line-height: var(--az-text-title-md-line);
+  font-weight: var(--az-text-title-md-weight);
+}
+.az-rb-label--size-xl .az-rb-title {
+  font-size: var(--az-text-title-lg-size);
+  line-height: var(--az-text-title-lg-line);
+  font-weight: var(--az-text-title-lg-weight);
+}
+.az-rb-label--with-desc .az-rb-title {
+  font-size: var(--az-text-label-lg-size);
+  line-height: var(--az-text-label-lg-line);
+  font-weight: var(--az-text-label-lg-weight);
+}
+
+.az-rb-label--disabled .az-rb-title {
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-rb-desc {
+  font-size: var(--az-text-body-sm-size);
+  line-height: var(--az-text-body-sm-line);
+  color: var(--az-color-on-surface-variant);
+}

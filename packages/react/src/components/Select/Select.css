@@ -1,0 +1,226 @@
+.az-select-field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--az-space-gutter-xs);
+  width: 100%;
+  font-family: var(--az-font-sans);
+}
+
+.az-select-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.az-select-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border: 1px solid var(--az-color-outline);
+  background-color: var(--az-color-surface);
+  color: var(--az-color-on-surface);
+  font-family: var(--az-font-sans);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+              border-color var(--az-duration-state-change) var(--az-ease-state-change),
+              box-shadow var(--az-duration-state-change) var(--az-ease-state-change),
+              color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-select-trigger--pill { border-radius: var(--az-radius-full); }
+.az-select-trigger--rounded { border-radius: var(--az-radius-md); }
+
+/* Sizes */
+.az-select-trigger--xs {
+  height: 28px;
+  padding: 0 10px 0 12px;
+  font-size: var(--az-text-body-sm-size);
+  gap: 6px;
+}
+.az-select-trigger--sm {
+  height: 32px;
+  padding: 0 12px 0 14px;
+  font-size: var(--az-text-body-sm-size);
+}
+.az-select-trigger--md {
+  height: 40px;
+  padding: 0 14px 0 16px;
+  font-size: var(--az-text-body-md-size);
+}
+.az-select-trigger--lg {
+  height: 48px;
+  padding: 0 16px 0 20px;
+  font-size: var(--az-text-body-lg-size);
+}
+.az-select-trigger--xl {
+  height: 56px;
+  padding: 0 20px 0 24px;
+  font-size: var(--az-text-title-md-size);
+  font-weight: var(--az-text-title-md-weight);
+}
+
+/* Variants */
+.az-select-trigger--filled {
+  background-color: var(--az-color-surface-container-low);
+}
+.az-select-trigger--filled:hover:not(:disabled) {
+  background-color: var(--az-color-surface);
+}
+
+.az-select-trigger--borderless {
+  background-color: transparent;
+  border-color: transparent;
+}
+.az-select-trigger--borderless:hover:not(:disabled) {
+  background-color: var(--az-color-surface-container);
+}
+
+.az-select-trigger--inside-addon,
+.az-select-trigger--inside-fieldset {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  height: 100%;
+  padding: 0 12px;
+}
+
+.az-select-trigger--inside-fieldset {
+  padding: 2px 0;
+}
+
+/* Open & Focus */
+.az-select-trigger[aria-expanded='true']:not(.az-select-trigger--inside-addon):not(.az-select-trigger--inside-fieldset),
+.az-select-trigger:focus-visible:not(.az-select-trigger--inside-addon):not(.az-select-trigger--inside-fieldset) {
+  outline: none;
+  background-color: var(--az-color-surface);
+  border-color: var(--az-color-primary);
+  box-shadow: var(--az-focus-halo);
+}
+
+/* Validation */
+.az-select-trigger--invalid:not(.az-select-trigger--inside-addon):not(.az-select-trigger--inside-fieldset) {
+  border-color: var(--az-color-error);
+}
+.az-select-trigger--invalid:focus-visible:not(.az-select-trigger--inside-addon):not(.az-select-trigger--inside-fieldset) {
+  border-color: var(--az-color-error);
+  box-shadow: var(--az-error-halo);
+}
+
+.az-select-trigger--valid:not(.az-select-trigger--inside-addon):not(.az-select-trigger--inside-fieldset) {
+  border-color: var(--az-color-success);
+}
+.az-select-trigger--valid:focus-visible:not(.az-select-trigger--inside-addon):not(.az-select-trigger--inside-fieldset) {
+  border-color: var(--az-color-success);
+  box-shadow: var(--az-success-halo);
+}
+
+/* Disabled */
+.az-select-trigger:disabled {
+  background-color: var(--az-color-surface-container);
+  border-color: var(--az-color-outline-variant);
+  color: var(--az-color-on-surface-variant);
+  cursor: not-allowed;
+}
+
+.az-select-value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.az-select-value--placeholder {
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-select-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--az-color-on-surface-variant);
+  flex-shrink: 0;
+  transition: transform var(--az-duration-state-change) var(--az-ease-state-change),
+              color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-select-trigger[aria-expanded='true'] .az-select-chevron {
+  transform: rotate(180deg);
+  color: var(--az-color-primary);
+}
+
+@keyframes az-select-menu-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Menu */
+.az-select-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 45;
+  border-radius: var(--az-radius-lg);
+  background-color: var(--az-color-surface);
+  border: 1px solid var(--az-color-outline-variant);
+  padding: 6px;
+  box-shadow: var(--az-shadow-ambient);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 260px;
+  overflow-y: auto;
+  animation: az-select-menu-enter var(--az-duration-surface-enter) var(--az-ease-surface-enter);
+}
+
+.az-select-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: var(--az-radius-md);
+  background: transparent;
+  color: var(--az-color-on-surface);
+  font-family: var(--az-font-sans);
+  font-size: var(--az-text-body-md-size);
+  line-height: var(--az-text-body-md-line);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+              color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-select-option:hover:not(:disabled),
+.az-select-option--highlighted:not(:disabled) {
+  background-color: var(--az-color-surface-container);
+}
+
+.az-select-option[aria-selected='true'] {
+  background-color: var(--az-color-primary-container);
+  color: var(--az-color-primary);
+  font-weight: 500;
+}
+
+.az-select-option:disabled {
+  color: var(--az-color-on-surface-variant);
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.az-select-check {
+  color: var(--az-color-primary);
+  flex-shrink: 0;
+}
+

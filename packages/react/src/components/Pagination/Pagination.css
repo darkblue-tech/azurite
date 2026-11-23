@@ -1,0 +1,184 @@
+.az-pagination {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--az-font-sans);
+  background-color: var(--az-color-surface);
+  border: 1px solid var(--az-color-outline-variant);
+}
+
+.az-pagination--standard {
+  border-radius: var(--az-radius-full);
+  padding: 8px 16px;
+  gap: 8px;
+}
+
+.az-pagination--compact {
+  width: 100%;
+  max-width: 400px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  border-radius: var(--az-radius-xl);
+  padding: var(--az-space-gutter-md);
+  gap: var(--az-space-gutter-md);
+}
+
+.az-pagination__pages {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.az-pagination__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: var(--az-radius-full);
+  border: 0;
+  background: transparent;
+  color: var(--az-color-on-surface-variant);
+  font-family: var(--az-font-sans);
+  font-size: var(--az-text-body-md-size);
+  line-height: var(--az-text-body-md-line);
+  font-weight: var(--az-text-body-md-weight);
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+              color var(--az-duration-state-change) var(--az-ease-state-change),
+              transform var(--az-duration-spring-press) var(--az-ease-spring-press);
+}
+
+.az-pagination__pages .az-pagination__btn,
+.az-pagination__ellipsis {
+  width: var(--az-pagination-slot-w, 36px);
+  min-width: var(--az-pagination-slot-w, 36px);
+}
+
+.az-pagination--sm .az-pagination__btn,
+.az-pagination--sm .az-pagination__ellipsis {
+  height: 30px;
+  font-size: var(--az-text-body-sm-size);
+}
+
+.az-pagination--sm .az-pagination__btn--nav {
+  width: 30px;
+  min-width: 30px;
+}
+
+.az-pagination--lg .az-pagination__btn,
+.az-pagination--lg .az-pagination__ellipsis {
+  height: 42px;
+  font-size: var(--az-text-body-lg-size);
+}
+
+.az-pagination--lg .az-pagination__btn--nav {
+  width: 42px;
+  min-width: 42px;
+}
+
+.az-pagination__btn--nav {
+  color: var(--az-color-on-surface);
+  flex-shrink: 0;
+}
+
+.az-pagination__btn:not(:disabled):hover {
+  background-color: var(--az-color-surface-container);
+}
+
+.az-pagination__btn:not(:disabled):active {
+  transform: scale(0.96);
+}
+
+.az-pagination__btn:focus-visible {
+  outline: none;
+  box-shadow: var(--az-focus-ring);
+}
+
+.az-pagination__btn:disabled {
+  background-color: var(--az-color-surface-container-low);
+  color: var(--az-color-on-surface-variant);
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.az-pagination__btn--active,
+.az-pagination__btn--active:hover {
+  background-color: var(--az-color-primary);
+  color: var(--az-color-on-primary);
+  font-size: var(--az-text-label-lg-size);
+  font-weight: var(--az-text-label-lg-weight);
+}
+
+.az-pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  color: var(--az-color-on-surface-variant);
+  font-size: var(--az-text-body-md-size);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+/* Compact Mode Controls */
+.az-pagination__compact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 112px;
+  padding: 8px 16px;
+  border-radius: var(--az-radius-full);
+  border: 1px solid var(--az-color-outline-variant);
+  background-color: var(--az-color-surface);
+  color: var(--az-color-on-surface);
+  font-family: var(--az-font-sans);
+  font-size: var(--az-text-label-lg-size);
+  line-height: var(--az-text-label-lg-line);
+  font-weight: var(--az-text-label-lg-weight);
+  cursor: pointer;
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+              transform var(--az-duration-spring-press) var(--az-ease-spring-press);
+}
+
+.az-pagination__compact-btn--prev {
+  justify-self: start;
+}
+
+.az-pagination__compact-btn--next {
+  justify-self: end;
+}
+
+.az-pagination__compact-btn:not(:disabled):hover {
+  background-color: var(--az-color-surface-container-low);
+}
+
+.az-pagination__compact-btn:not(:disabled):active {
+  transform: scale(0.97);
+}
+
+.az-pagination__compact-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--az-focus-ring);
+}
+
+.az-pagination__compact-btn:disabled {
+  background-color: var(--az-color-surface-container-low);
+  color: var(--az-color-on-surface-variant);
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.az-pagination__compact-label {
+  justify-self: center;
+  text-align: center;
+  white-space: nowrap;
+  font-size: var(--az-text-body-md-size);
+  line-height: var(--az-text-body-md-line);
+  color: var(--az-color-on-surface);
+  font-variant-numeric: tabular-nums;
+}

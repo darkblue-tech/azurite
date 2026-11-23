@@ -1,0 +1,33 @@
+.az-validator-hint {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows var(--az-duration-state-change) var(--az-ease-state-change),
+              opacity var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-validator-hint--visible {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.az-validator-hint__inner {
+  overflow: hidden;
+  font-family: var(--az-font-sans);
+  font-size: var(--az-text-body-sm-size);
+  line-height: var(--az-text-body-sm-line);
+  font-weight: var(--az-text-body-sm-weight);
+  letter-spacing: var(--az-text-body-sm-tracking);
+  color: var(--az-color-on-surface-variant);
+  padding-top: 2px;
+}
+
+.az-validator-hint--invalid .az-validator-hint__inner {
+  color: var(--az-color-error);
+  animation: az-shake-subtle 220ms var(--az-ease-state-change);
+}
+
+.az-validator-hint--valid .az-validator-hint__inner {
+  color: var(--az-color-success);
+}
+

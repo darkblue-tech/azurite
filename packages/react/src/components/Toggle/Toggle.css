@@ -1,0 +1,246 @@
+.az-toggle-field {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--az-space-gutter-xs);
+}
+
+.az-toggle-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--az-space-gutter-md);
+  font-family: var(--az-font-sans);
+}
+
+.az-toggle-row--left {
+  flex-direction: row-reverse;
+}
+
+.az-toggle-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.az-toggle-label {
+  font-size: var(--az-text-title-md-size);
+  line-height: var(--az-text-title-md-line);
+  font-weight: var(--az-text-title-md-weight);
+  color: var(--az-color-on-surface);
+  cursor: pointer;
+}
+
+.az-toggle-desc {
+  font-size: var(--az-text-body-sm-size);
+  line-height: var(--az-text-body-sm-line);
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-toggle {
+  --az-toggle-thumb: 20px;
+  --az-toggle-inset: 4px;
+  position: relative;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--az-radius-full);
+  border: 0;
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+  background-color: var(--az-color-surface-container-high);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+    box-shadow var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-toggle:focus-visible {
+  outline: none;
+  box-shadow: var(--az-focus-ring);
+}
+
+/* Sizes with exact symmetric top/bottom/left/right spacing */
+.az-toggle--xs {
+  width: 28px;
+  height: 16px;
+  --az-toggle-thumb: 12px;
+  --az-toggle-inset: 2px;
+}
+
+.az-toggle--sm {
+  width: 36px;
+  height: 20px;
+  --az-toggle-thumb: 14px;
+  --az-toggle-inset: 3px;
+}
+
+.az-toggle--md {
+  width: 48px;
+  height: 28px;
+  --az-toggle-thumb: 20px;
+  --az-toggle-inset: 4px;
+}
+
+.az-toggle--lg {
+  width: 56px;
+  height: 32px;
+  --az-toggle-thumb: 24px;
+  --az-toggle-inset: 4px;
+}
+
+.az-toggle--xl {
+  width: 64px;
+  height: 36px;
+  --az-toggle-thumb: 28px;
+  --az-toggle-inset: 4px;
+}
+
+.az-toggle__thumb {
+  position: absolute;
+  top: 50%;
+  left: var(--az-toggle-inset);
+  margin-top: calc(var(--az-toggle-thumb) * -0.5);
+  width: var(--az-toggle-thumb);
+  height: var(--az-toggle-thumb);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--az-color-surface);
+  color: var(--az-color-on-surface);
+  box-shadow: var(--az-shadow-sm);
+  transition: left var(--az-duration-spring-press) var(--az-ease-spring-press),
+    transform var(--az-duration-spring-press) var(--az-ease-spring-press),
+    background-color var(--az-duration-state-change) var(--az-ease-state-change),
+    color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-toggle--xs .az-toggle__thumb { font-size: 9px; }
+.az-toggle--sm .az-toggle__thumb { font-size: 10px; }
+.az-toggle--md .az-toggle__thumb { font-size: 13px; }
+.az-toggle--lg .az-toggle__thumb { font-size: 15px; }
+.az-toggle--xl .az-toggle__thumb { font-size: 17px; }
+
+/* Checked Travel (symmetric right inset) */
+.az-toggle[aria-checked='true'] .az-toggle__thumb {
+  left: calc(100% - var(--az-toggle-thumb) - var(--az-toggle-inset));
+}
+
+/* Mixed Travel (centered) */
+.az-toggle[aria-checked='mixed'] .az-toggle__thumb {
+  left: calc(50% - var(--az-toggle-thumb) * 0.5);
+}
+
+.az-toggle:not(:disabled):active .az-toggle__thumb {
+  transform: scale(0.92);
+}
+
+/* Checked Tones */
+.az-toggle[aria-checked='true'].az-toggle--tone-primary {
+  background-color: var(--az-color-primary);
+}
+
+.az-toggle[aria-checked='true'].az-toggle--tone-primary .az-toggle__thumb {
+  color: var(--az-color-primary);
+}
+
+.az-toggle[aria-checked='true'].az-toggle--tone-secondary {
+  background-color: var(--az-color-secondary);
+}
+
+.az-toggle[aria-checked='true'].az-toggle--tone-secondary .az-toggle__thumb {
+  color: var(--az-color-secondary);
+}
+
+.az-toggle[aria-checked='true'].az-toggle--tone-tertiary {
+  background-color: var(--az-color-tertiary);
+}
+
+.az-toggle[aria-checked='true'].az-toggle--tone-tertiary .az-toggle__thumb {
+  color: var(--az-color-tertiary);
+}
+
+.az-toggle[aria-checked='true'].az-toggle--tone-neutral {
+  background-color: var(--az-color-on-surface);
+}
+
+.az-toggle[aria-checked='true'].az-toggle--tone-neutral .az-toggle__thumb {
+  color: var(--az-color-on-surface);
+}
+
+.az-toggle[aria-checked='true'].az-toggle--tone-error {
+  background-color: var(--az-color-error);
+}
+
+.az-toggle[aria-checked='true'].az-toggle--tone-error .az-toggle__thumb {
+  color: var(--az-color-error);
+}
+
+.az-toggle[aria-checked='true'].az-toggle--tone-success {
+  background-color: var(--az-color-success);
+}
+
+.az-toggle[aria-checked='true'].az-toggle--tone-success .az-toggle__thumb {
+  color: var(--az-color-success);
+}
+
+/* Indeterminate (Mixed) Track */
+.az-toggle[aria-checked='mixed'] {
+  background-color: var(--az-color-secondary);
+}
+
+.az-toggle__dash {
+  width: 50%;
+  height: 2px;
+  border-radius: var(--az-radius-full);
+  background-color: var(--az-color-secondary);
+}
+
+/* Validation Invalid / Valid States */
+.az-toggle--invalid[aria-checked='false'] {
+  background-color: var(--az-color-surface);
+  box-shadow: inset 0 0 0 1px var(--az-color-error);
+}
+
+.az-toggle--invalid[aria-checked='false']:focus-visible {
+  box-shadow: var(--az-focus-ring), inset 0 0 0 1px var(--az-color-error);
+}
+
+.az-toggle--invalid[aria-checked='false'] .az-toggle__thumb {
+  background-color: var(--az-color-error);
+  color: var(--az-color-on-error);
+  box-shadow: none;
+}
+
+.az-toggle--valid[aria-checked='true'] {
+  background-color: var(--az-color-success);
+}
+
+/* Disabled States */
+.az-toggle:disabled {
+  cursor: not-allowed;
+}
+
+.az-toggle:disabled[aria-checked='false'] {
+  background-color: var(--az-color-surface-container-high);
+  box-shadow: inset 0 0 0 1px var(--az-color-outline-variant);
+}
+
+.az-toggle:disabled[aria-checked='false'] .az-toggle__thumb {
+  background-color: var(--az-color-outline);
+  box-shadow: none;
+}
+
+.az-toggle:disabled[aria-checked='true'],
+.az-toggle:disabled[aria-checked='mixed'] {
+  background-color: var(--az-color-outline);
+}
+
+.az-toggle:disabled[aria-checked='true'] .az-toggle__thumb,
+.az-toggle:disabled[aria-checked='mixed'] .az-toggle__thumb {
+  background-color: var(--az-color-surface-container);
+  box-shadow: none;
+}

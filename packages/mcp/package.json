@@ -1,0 +1,49 @@
+{
+  "name": "azurite-mcp",
+  "version": "0.1.0",
+  "description": "Model Context Protocol (MCP) server for the Azurite Design System (design.darkblue.tech)",
+  "license": "MIT",
+  "homepage": "https://design.darkblue.tech/ai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darkblue-tech/azurite.git",
+    "directory": "packages/mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/darkblue-tech/azurite/issues"
+  },
+  "keywords": [
+    "azurite",
+    "mcp",
+    "model-context-protocol",
+    "design-system",
+    "ai-tools"
+  ],
+  "type": "module",
+  "bin": {
+    "azurite-mcp": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "start": "node ./dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "azurite-react": "^0.1.0",
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsup": "^8.4.0"
+  }
+}

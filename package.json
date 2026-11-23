@@ -1,0 +1,25 @@
+{
+  "name": "azurite-design-system",
+  "private": true,
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "Azurite Design System (design.darkblue.tech) — React component library, MCP server, and Agent Skill",
+  "homepage": "https://design.darkblue.tech",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darkblue-tech/azurite.git"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build:lib && npm run sync:skill && npm run build:mcp",
+    "build:lib": "npm run build --workspace=azurite-react",
+    "build:mcp": "npm run build --workspace=azurite-mcp",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "sync:skill": "node skills/azurite/scripts/sync-references.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0"
+  }
+}

@@ -1,0 +1,221 @@
+/* Azurite Aura — Conic-Gradient Orbital Border Light Effect */
+
+@keyframes az-aura-orbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes az-aura-orbit-wide {
+  0% {
+    transform: translate(-50%, -50%) scaleY(0.15) rotate(0deg);
+    animation-timing-function: cubic-bezier(0.35, 0, 0.65, 1);
+  }
+  12.5% {
+    transform: translate(-50%, -50%) scaleY(0.15) rotate(45deg);
+    animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  37.5% {
+    transform: translate(-50%, -50%) scaleY(0.15) rotate(135deg);
+    animation-timing-function: cubic-bezier(0.64, 0, 0.78, 0.39);
+  }
+  62.5% {
+    transform: translate(-50%, -50%) scaleY(0.15) rotate(225deg);
+    animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+  87.5% {
+    transform: translate(-50%, -50%) scaleY(0.15) rotate(315deg);
+    animation-timing-function: cubic-bezier(0.64, 0, 0.78, 0.39);
+  }
+  100% {
+    transform: translate(-50%, -50%) scaleY(0.15) rotate(360deg);
+  }
+}
+
+.az-aura-frame {
+  --az-aura-size: 2px;
+  --az-aura-radius: var(--az-radius-xl);
+  --az-aura-duration: 4s;
+  --az-aura-glow-opacity: 0.38;
+  --az-aura-gradient: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 215deg,
+    rgba(10, 54, 209, 0.16) 255deg,
+    var(--az-color-primary) 305deg,
+    var(--az-color-tertiary) 335deg,
+    rgba(2, 132, 199, 0.18) 352deg,
+    transparent 360deg
+  );
+
+  position: relative;
+  display: flex;
+  border-radius: var(--az-aura-radius);
+  overflow: visible;
+  isolation: isolate;
+}
+
+.az-aura-frame--inline {
+  display: inline-flex;
+  width: fit-content;
+}
+
+.az-aura-frame--radius-sm { --az-aura-radius: var(--az-radius-sm); }
+.az-aura-frame--radius-md { --az-aura-radius: var(--az-radius-md); }
+.az-aura-frame--radius-lg { --az-aura-radius: var(--az-radius-lg); }
+.az-aura-frame--radius-xl { --az-aura-radius: var(--az-radius-xl); }
+.az-aura-frame--radius-full { --az-aura-radius: var(--az-radius-full); }
+
+.az-aura-frame--xs { --az-aura-size: 1px; }
+.az-aura-frame--sm { --az-aura-size: 1.5px; }
+.az-aura-frame--md { --az-aura-size: 2px; }
+.az-aura-frame--lg { --az-aura-size: 3px; }
+.az-aura-frame--xl { --az-aura-size: 4px; }
+
+/* Variant & Preset Conic Gradients */
+.az-aura-frame--dual {
+  --az-aura-gradient: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(10, 54, 209, 0.16) 15deg,
+    var(--az-color-primary) 45deg,
+    var(--az-color-tertiary) 70deg,
+    rgba(2, 132, 199, 0.16) 95deg,
+    transparent 115deg,
+    transparent 180deg,
+    rgba(10, 54, 209, 0.16) 195deg,
+    var(--az-color-primary) 225deg,
+    var(--az-color-tertiary) 250deg,
+    rgba(2, 132, 199, 0.16) 275deg,
+    transparent 295deg,
+    transparent 360deg
+  );
+}
+
+.az-aura-frame--wide {
+  --az-aura-gradient: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 240deg,
+    rgba(10, 54, 209, 0.14) 268deg,
+    var(--az-color-primary) 305deg,
+    var(--az-color-tertiary) 332deg,
+    rgba(2, 132, 199, 0.16) 350deg,
+    transparent 360deg
+  );
+}
+
+.az-aura-frame--preset-rainbow,
+.az-aura-frame--rainbow {
+  --az-aura-gradient: conic-gradient(
+    from 0deg,
+    #0A36D1 0deg,
+    #06B6D4 72deg,
+    #10B981 144deg,
+    #F59E0B 216deg,
+    #EC4899 288deg,
+    #8B5CF6 330deg,
+    #0A36D1 360deg
+  );
+}
+
+.az-aura-frame--preset-emerald {
+  --az-aura-gradient: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 215deg,
+    rgba(4, 120, 87, 0.18) 255deg,
+    #047857 305deg,
+    #34D399 335deg,
+    rgba(52, 211, 153, 0.18) 352deg,
+    transparent 360deg
+  );
+}
+
+.az-aura-frame--preset-violet {
+  --az-aura-gradient: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 215deg,
+    rgba(109, 40, 217, 0.18) 255deg,
+    #6D28D9 305deg,
+    #EC4899 335deg,
+    rgba(236, 72, 153, 0.18) 352deg,
+    transparent 360deg
+  );
+}
+
+.az-aura-frame--preset-amber {
+  --az-aura-gradient: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 215deg,
+    rgba(180, 83, 9, 0.18) 255deg,
+    #B45309 305deg,
+    #FBBF24 335deg,
+    rgba(251, 191, 36, 0.18) 352deg,
+    transparent 360deg
+  );
+}
+
+.az-aura-frame__ring,
+.az-aura-frame__glow {
+  position: absolute;
+  inset: calc(-1 * var(--az-aura-size));
+  border-radius: calc(var(--az-aura-radius) + var(--az-aura-size));
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 420ms var(--az-ease-state-change);
+}
+
+.az-aura-frame__glow {
+  filter: blur(calc(var(--az-aura-size) + 4px));
+  opacity: var(--az-aura-glow-opacity);
+  will-change: opacity;
+  transform: translateZ(0);
+}
+
+/* Oversized square guarantees the inscribed circle covers wide panels up to 1360px+ at every angle */
+.az-aura-frame__beam {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(2200px, 160vw, 3600px);
+  height: clamp(2200px, 160vw, 3600px);
+  transform: translate(-50%, -50%) rotate(0deg);
+  background: var(--az-aura-gradient);
+  animation: az-aura-orbit 4s linear infinite;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.az-aura-frame--wide .az-aura-frame__beam {
+  transform: translate(-50%, -50%) scaleY(0.15) rotate(0deg);
+  animation: az-aura-orbit-wide 4s linear infinite;
+}
+
+.az-aura-frame--paused .az-aura-frame__beam {
+  animation-play-state: paused;
+}
+
+.az-aura-frame__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  border-radius: var(--az-aura-radius);
+}
+
+.az-aura-frame--inline .az-aura-frame__inner {
+  display: inline-flex;
+  width: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .az-aura-frame__beam {
+    animation: none !important;
+  }
+}

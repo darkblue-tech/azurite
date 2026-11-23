@@ -1,0 +1,105 @@
+.az-divider-hr {
+  border: 0;
+  border-top: 1px solid var(--az-color-outline-variant);
+  width: 100%;
+  margin: 0;
+}
+
+.az-divider {
+  display: flex;
+  align-items: center;
+  color: var(--az-color-on-surface-variant);
+  font-family: var(--az-font-sans);
+  font-size: var(--az-text-body-sm-size);
+  line-height: var(--az-text-body-sm-line);
+  font-weight: var(--az-text-body-sm-weight);
+}
+
+.az-divider--horizontal {
+  width: 100%;
+  flex-direction: row;
+  gap: var(--az-space-gutter-md);
+}
+
+.az-divider--vertical {
+  flex-direction: column;
+  height: 100%;
+  align-self: stretch;
+  gap: var(--az-space-gutter-sm);
+}
+
+/* Bare vertical line */
+.az-divider--vertical.az-divider--bare {
+  width: 1px;
+  gap: 0;
+  background-color: var(--az-color-outline-variant);
+}
+
+.az-divider__line {
+  flex: 1 1 0%;
+}
+
+.az-divider--horizontal .az-divider__line {
+  height: 0;
+  border-top: 1px solid var(--az-color-outline-variant);
+}
+
+.az-divider--vertical .az-divider__line {
+  width: 0;
+  border-left: 1px solid var(--az-color-outline-variant);
+}
+
+/* Line style variants */
+.az-divider--dashed .az-divider__line,
+.az-divider-hr.az-divider--dashed {
+  border-style: dashed;
+}
+.az-divider--dotted .az-divider__line,
+.az-divider-hr.az-divider--dotted {
+  border-style: dotted;
+}
+
+/* Tone variants */
+.az-divider--tone-subtle .az-divider__line,
+.az-divider-hr.az-divider--tone-subtle {
+  opacity: 0.6;
+}
+.az-divider--tone-strong .az-divider__line,
+.az-divider-hr.az-divider--tone-strong {
+  border-color: var(--az-color-outline);
+}
+.az-divider--tone-primary .az-divider__line,
+.az-divider-hr.az-divider--tone-primary {
+  border-color: var(--az-color-primary);
+}
+.az-divider--vertical.az-divider--bare.az-divider--tone-strong {
+  background-color: var(--az-color-outline);
+}
+.az-divider--vertical.az-divider--bare.az-divider--tone-primary {
+  background-color: var(--az-color-primary);
+}
+
+/* Label placement */
+.az-divider--label-start .az-divider__line--start {
+  flex: 0 0 24px;
+}
+.az-divider--label-end .az-divider__line--end {
+  flex: 0 0 24px;
+}
+
+.az-divider__label {
+  flex-shrink: 0;
+}
+
+/* Spacing presets */
+.az-divider--horizontal.az-divider--space-sm,
+.az-divider-hr.az-divider--space-sm { margin: 8px 0; }
+.az-divider--horizontal.az-divider--space-md,
+.az-divider-hr.az-divider--space-md { margin: 16px 0; }
+.az-divider--horizontal.az-divider--space-lg,
+.az-divider-hr.az-divider--space-lg { margin: 24px 0; }
+
+.az-divider--vertical.az-divider--space-sm { margin: 0 8px; }
+.az-divider--vertical.az-divider--space-md { margin: 0 16px; }
+.az-divider--vertical.az-divider--space-lg { margin: 0 24px; }
+

@@ -1,0 +1,192 @@
+/* Azurite Textarea — Multi-Line Input Across 5 Scales, Ghost Surface & Controls */
+
+.az-textarea-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  font-family: var(--az-font-sans);
+}
+
+.az-textarea-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--az-space-gutter-sm);
+}
+
+.az-textarea-hint-tag {
+  font-size: var(--az-text-label-sm-size);
+  line-height: var(--az-text-label-sm-line);
+  font-weight: var(--az-text-label-sm-weight);
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-textarea-shell {
+  position: relative;
+  display: flex;
+  width: 100%;
+  border-radius: var(--az-radius-md);
+}
+
+.az-textarea {
+  --az-ta-px: 16px;
+  --az-ta-py: 12px;
+  --az-ta-radius: var(--az-radius-md);
+  --az-ta-font: var(--az-text-body-md-size);
+  --az-ta-line: var(--az-text-body-md-line);
+
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--az-ta-py) var(--az-ta-px);
+  border-radius: var(--az-ta-radius);
+  font-family: var(--az-font-sans);
+  font-size: var(--az-ta-font);
+  line-height: var(--az-ta-line);
+  color: var(--az-color-on-surface);
+  background: var(--az-color-surface);
+  border: 1px solid var(--az-color-outline);
+  resize: vertical;
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+    border-color var(--az-duration-state-change) var(--az-ease-state-change),
+    box-shadow var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-textarea::placeholder {
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-textarea:focus {
+  outline: none;
+  border-color: var(--az-color-primary);
+  box-shadow: var(--az-focus-halo);
+}
+
+/* Ghost Variant */
+.az-textarea--ghost {
+  background: transparent;
+  border-color: transparent;
+}
+
+.az-textarea--ghost:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--az-color-surface) 60%, transparent);
+}
+
+.az-textarea--ghost:focus {
+  background: var(--az-color-surface);
+  border-color: var(--az-color-outline-variant);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--az-color-primary) 15%, transparent);
+}
+
+/* Sizes XS - XL */
+.az-textarea--xs {
+  --az-ta-px: 12px;
+  --az-ta-py: 6px;
+  --az-ta-radius: var(--az-radius-sm);
+  --az-ta-font: var(--az-text-body-sm-size);
+  --az-ta-line: var(--az-text-body-sm-line);
+}
+
+.az-textarea--sm {
+  --az-ta-px: 14px;
+  --az-ta-py: 8px;
+  --az-ta-radius: var(--az-radius-md);
+  --az-ta-font: var(--az-text-body-sm-size);
+  --az-ta-line: var(--az-text-body-sm-line);
+}
+
+.az-textarea--md {
+  --az-ta-px: 16px;
+  --az-ta-py: 12px;
+  --az-ta-radius: var(--az-radius-md);
+  --az-ta-font: var(--az-text-body-md-size);
+  --az-ta-line: var(--az-text-body-md-line);
+}
+
+.az-textarea--lg {
+  --az-ta-px: 20px;
+  --az-ta-py: 14px;
+  --az-ta-radius: var(--az-radius-md);
+  --az-ta-font: var(--az-text-body-lg-size);
+  --az-ta-line: var(--az-text-body-lg-line);
+}
+
+.az-textarea--xl {
+  --az-ta-px: 24px;
+  --az-ta-py: 16px;
+  --az-ta-radius: var(--az-radius-xl);
+  --az-ta-font: var(--az-text-body-lg-size);
+  --az-ta-line: var(--az-text-body-lg-line);
+}
+
+/* Resize Options */
+.az-textarea--resize-none { resize: none; }
+.az-textarea--resize-vertical { resize: vertical; }
+.az-textarea--resize-horizontal { resize: horizontal; }
+.az-textarea--resize-both { resize: both; }
+
+/* Validation & Disabled States */
+.az-textarea--invalid {
+  border-color: var(--az-color-error);
+}
+
+.az-textarea--invalid:focus {
+  border-color: var(--az-color-error);
+  box-shadow: var(--az-error-halo);
+}
+
+.az-textarea--valid {
+  border-color: var(--az-color-success);
+}
+
+.az-textarea--valid:focus {
+  border-color: var(--az-color-success);
+  box-shadow: var(--az-success-halo);
+}
+
+.az-textarea:disabled {
+  background: var(--az-color-surface-container);
+  border-color: var(--az-color-outline-variant);
+  color: var(--az-color-on-surface-variant);
+  cursor: not-allowed;
+  resize: none;
+}
+
+/* Footer Controls Bar */
+.az-textarea-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--az-space-gutter-md);
+  padding-top: 2px;
+}
+
+.az-textarea-helper {
+  font-size: var(--az-text-body-sm-size);
+  line-height: var(--az-text-body-sm-line);
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-textarea-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--az-space-gutter-md);
+  margin-left: auto;
+}
+
+.az-textarea-count {
+  font-size: var(--az-text-body-sm-size);
+  line-height: var(--az-text-body-sm-line);
+  font-variant-numeric: tabular-nums;
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-textarea-count--near {
+  color: var(--az-color-warning-text);
+}
+
+.az-textarea-count--limit {
+  color: var(--az-color-error);
+}
+

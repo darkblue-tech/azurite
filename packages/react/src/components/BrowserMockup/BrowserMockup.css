@@ -1,0 +1,297 @@
+/* Azurite BrowserMockup — Editorial Desktop Viewport Frame */
+
+.az-browser,
+.az-browser--theme-light {
+  --az-browser-bg: #ffffff;
+  --az-browser-tabstrip-bg: #f1f5f9;
+  --az-browser-toolbar-bg: #f8fafc;
+  --az-browser-address-bg: #ffffff;
+  --az-browser-border: #e2e8f0;
+  --az-browser-ink: #0f172a;
+  --az-browser-muted: #64748b;
+  --az-browser-secure: #047857;
+  --az-browser-insecure: #b45309;
+  --az-browser-pill-hover: #e2e8f0;
+
+  width: 100%;
+  min-width: 0;
+  border-radius: var(--az-radius-xl);
+  border: 1px solid var(--az-browser-border);
+  background-color: var(--az-browser-bg);
+  color: var(--az-browser-ink);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+[data-theme='dark'] .az-browser--theme-auto,
+.dark .az-browser--theme-auto,
+.az-browser--theme-dark {
+  --az-browser-bg: #0f141c;
+  --az-browser-tabstrip-bg: #121824;
+  --az-browser-toolbar-bg: #182030;
+  --az-browser-address-bg: #0c111a;
+  --az-browser-border: #263246;
+  --az-browser-ink: #f8fafc;
+  --az-browser-muted: #94a3b8;
+  --az-browser-secure: #34d399;
+  --az-browser-insecure: #fbbf24;
+  --az-browser-pill-hover: #253147;
+}
+
+[data-theme='dark'] .az-browser--theme-light,
+.dark .az-browser--theme-light {
+  --az-browser-bg: #ffffff;
+  --az-browser-tabstrip-bg: #f1f5f9;
+  --az-browser-toolbar-bg: #f8fafc;
+  --az-browser-address-bg: #ffffff;
+  --az-browser-border: #e2e8f0;
+  --az-browser-ink: #0f172a;
+  --az-browser-muted: #64748b;
+  --az-browser-secure: #047857;
+  --az-browser-insecure: #b45309;
+  --az-browser-pill-hover: #e2e8f0;
+}
+
+.az-browser--elevation-flat {
+  box-shadow: none;
+}
+
+.az-browser--elevation-soft {
+  box-shadow: var(--az-shadow-sm);
+}
+
+.az-browser--elevation-floating {
+  box-shadow: var(--az-shadow-lg);
+}
+
+/* Tab Strip */
+.az-browser__tabstrip {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 8px 14px 0;
+  background-color: var(--az-browser-tabstrip-bg);
+  border-bottom: 1px solid var(--az-browser-border);
+}
+
+.az-browser__dots {
+  align-self: center;
+  margin-bottom: 7px;
+}
+
+.az-browser__tabstrip .az-mockup-win-controls {
+  align-self: center;
+  margin-bottom: 7px;
+  margin-left: auto;
+  color: var(--az-browser-muted);
+}
+
+.az-browser__tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.az-browser__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.az-browser__tab {
+  appearance: none;
+  border: 1px solid transparent;
+  border-bottom: none;
+  background: transparent;
+  color: var(--az-browser-muted);
+  font-family: inherit;
+  font-size: var(--az-text-label-md-size);
+  line-height: 1;
+  font-weight: 500;
+  height: 32px;
+  max-width: 190px;
+  padding: 0 12px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+  transition:
+    background-color var(--az-duration-state-change) var(--az-ease-state-change),
+    color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-browser__tab:hover {
+  color: var(--az-browser-ink);
+  background-color: color-mix(in srgb, var(--az-browser-toolbar-bg) 60%, transparent);
+}
+
+.az-browser__tab--active {
+  position: relative;
+  color: var(--az-browser-ink);
+  font-weight: 600;
+  background-color: var(--az-browser-toolbar-bg);
+  border-color: var(--az-browser-border);
+}
+
+.az-browser__tab-icon {
+  display: inline-flex;
+  color: var(--az-browser-muted);
+  flex-shrink: 0;
+}
+
+.az-browser__tab--active .az-browser__tab-icon {
+  color: var(--az-color-primary);
+}
+
+.az-browser__tab-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.az-browser__tab:focus-visible,
+.az-browser__reload-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--az-focus-ring);
+}
+
+/* Toolbar Row */
+.az-browser__toolbar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  background-color: var(--az-browser-toolbar-bg);
+  border-bottom: 1px solid var(--az-browser-border);
+}
+
+.az-browser__toolbar:hover .az-mockup-dot {
+  opacity: 1;
+}
+
+.az-browser__toolbar-start,
+.az-browser__toolbar-end {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.az-browser__toolbar-end .az-mockup-win-controls {
+  color: var(--az-browser-muted);
+}
+
+.az-browser__nav-btns {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.az-browser__nav-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--az-radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--az-browser-muted);
+}
+
+.az-browser__nav-btn--disabled {
+  opacity: 0.45;
+}
+
+.az-browser__address-bar {
+  justify-self: center;
+  width: 100%;
+  max-width: 520px;
+  min-width: 0;
+  height: 30px;
+  padding: 0 6px 0 11px;
+  border-radius: var(--az-radius-full);
+  border: 1px solid var(--az-browser-border);
+  background-color: var(--az-browser-address-bg);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.az-browser__security-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.az-browser__security-icon--secure {
+  color: var(--az-browser-secure);
+}
+
+.az-browser__security-icon--insecure {
+  color: var(--az-browser-insecure);
+}
+
+.az-browser__url {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 12.5px;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.az-browser__url-muted {
+  color: var(--az-browser-muted);
+}
+
+.az-browser__url-host {
+  color: var(--az-browser-ink);
+  font-weight: 500;
+}
+
+.az-browser__reload-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--az-radius-full);
+  color: var(--az-browser-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition:
+    background-color var(--az-duration-state-change) var(--az-ease-state-change),
+    color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-browser__reload-btn:hover {
+  background-color: var(--az-browser-pill-hover);
+  color: var(--az-browser-ink);
+}
+
+.az-browser__reload-btn--spinning {
+  animation: az-spin 450ms linear;
+}
+
+/* Viewport Body */
+.az-browser__viewport {
+  background-color: var(--az-browser-bg);
+  color: var(--az-browser-ink);
+  overflow: auto;
+  min-width: 0;
+}
+
+.az-browser__viewport--pad-none { padding: 0; }
+.az-browser__viewport--pad-sm { padding: 14px; }
+.az-browser__viewport--pad-md { padding: 22px; }
+.az-browser__viewport--pad-lg { padding: 32px; }
+

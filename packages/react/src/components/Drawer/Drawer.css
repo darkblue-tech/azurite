@@ -1,0 +1,244 @@
+/* Azurite Drawer — Sidebar Navigation Rail (Icons-Only, Text-Only, Combined & Overlay) */
+
+@keyframes az-drawer-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes az-drawer-backdrop-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes az-drawer-slide-in-left {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes az-drawer-slide-out-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+@keyframes az-drawer-slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes az-drawer-slide-out-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+.az-drawer {
+  width: 100%;
+  max-width: 280px;
+  background: var(--az-color-surface);
+  border: 1px solid var(--az-color-outline-variant);
+  border-radius: var(--az-radius-xl);
+  padding: var(--az-space-gutter-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--az-space-gutter-md);
+  color: var(--az-color-on-surface);
+  font-family: var(--az-font-sans);
+  box-sizing: border-box;
+}
+
+.az-drawer--icons {
+  width: 80px;
+  max-width: 80px;
+  padding: var(--az-space-gutter-lg) 12px;
+  align-items: center;
+}
+
+.az-drawer__brand {
+  width: 100%;
+  padding-bottom: var(--az-space-gutter-md);
+  border-bottom: 1px solid var(--az-color-outline-variant);
+  display: flex;
+  align-items: center;
+  gap: var(--az-space-gutter-sm);
+}
+
+.az-drawer--icons .az-drawer__brand {
+  justify-content: center;
+}
+
+.az-drawer--text .az-drawer__brand,
+.az-drawer--combined .az-drawer__brand {
+  padding-inline: 8px;
+}
+
+.az-drawer__logo-box {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--az-radius-sm);
+  background: var(--az-color-primary);
+  color: var(--az-color-on-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.az-drawer--icons .az-drawer__logo-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+}
+
+.az-drawer__brand-title {
+  font-size: var(--az-text-title-md-size);
+  line-height: var(--az-text-title-md-line);
+  font-weight: var(--az-text-title-md-weight);
+  color: var(--az-color-on-surface);
+}
+
+.az-drawer__section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.az-drawer--icons .az-drawer__section {
+  align-items: center;
+  gap: 8px;
+}
+
+.az-drawer__section + .az-drawer__section {
+  padding-top: var(--az-space-gutter-md);
+  border-top: 1px solid var(--az-color-outline-variant);
+}
+
+.az-drawer__section-title {
+  padding: 0 12px 4px;
+  font-size: var(--az-text-label-sm-size);
+  line-height: var(--az-text-label-sm-line);
+  font-weight: var(--az-text-label-sm-weight);
+  letter-spacing: var(--az-text-label-sm-tracking);
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-drawer__item {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--az-color-on-surface-variant);
+  font-family: var(--az-font-sans);
+  font-size: var(--az-text-body-md-size);
+  line-height: var(--az-text-body-md-line);
+  font-weight: var(--az-text-body-md-weight);
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+    color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-drawer--icons .az-drawer__item {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  justify-content: center;
+}
+
+.az-drawer__item:hover:not(:disabled):not(.az-drawer__item--active) {
+  background: var(--az-color-surface-container-low);
+  color: var(--az-color-on-surface);
+}
+
+.az-drawer__item--active {
+  background: var(--az-color-primary-container);
+  color: var(--az-color-on-primary-container);
+  font-size: var(--az-text-label-lg-size);
+  line-height: var(--az-text-label-lg-line);
+  font-weight: var(--az-text-label-lg-weight);
+}
+
+.az-drawer--icons .az-drawer__item--active {
+  color: var(--az-color-primary);
+}
+
+.az-drawer__item:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.az-drawer__item:focus-visible {
+  outline: none;
+  box-shadow: var(--az-focus-ring);
+}
+
+.az-drawer__item-lead {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.az-drawer__footer {
+  margin-top: auto;
+  padding-top: var(--az-space-gutter-md);
+  border-top: 1px solid var(--az-color-outline-variant);
+  width: 100%;
+}
+
+/* Portal Slide-Over Overlay Mode */
+.az-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  background: rgba(15, 23, 42, 0.42);
+  backdrop-filter: blur(4px);
+  animation: az-drawer-backdrop-in var(--az-duration-surface-enter) var(--az-ease-surface-enter) forwards;
+}
+
+.az-drawer-backdrop--right {
+  justify-content: flex-end;
+}
+
+.az-drawer-backdrop--closing {
+  animation: az-drawer-backdrop-out var(--az-duration-surface-exit) var(--az-ease-surface-exit) forwards;
+}
+
+.az-drawer--overlay {
+  height: 100%;
+  border-radius: 0 var(--az-radius-xl) var(--az-radius-xl) 0;
+  border-block: 0;
+  border-left: 0;
+  box-shadow: var(--az-shadow-lg);
+  overflow-y: auto;
+  animation: az-drawer-slide-in-left var(--az-duration-surface-enter) var(--az-ease-surface-enter) forwards;
+}
+
+.az-drawer-backdrop--right .az-drawer--overlay {
+  border-radius: var(--az-radius-xl) 0 0 var(--az-radius-xl);
+  border-left: 1px solid var(--az-color-outline-variant);
+  border-right: 0;
+  animation-name: az-drawer-slide-in-right;
+}
+
+.az-drawer-backdrop--closing .az-drawer--overlay {
+  animation: az-drawer-slide-out-left var(--az-duration-surface-exit) var(--az-ease-surface-exit) forwards;
+}
+
+.az-drawer-backdrop--right.az-drawer-backdrop--closing .az-drawer--overlay {
+  animation-name: az-drawer-slide-out-right;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .az-drawer-backdrop,
+  .az-drawer--overlay {
+    animation-duration: 0.01ms !important;
+  }
+}
+

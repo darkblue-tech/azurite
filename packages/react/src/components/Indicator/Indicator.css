@@ -1,0 +1,154 @@
+.az-indicator-anchor {
+  position: relative;
+  display: inline-flex;
+  --az-indicator-ring: var(--az-color-surface);
+  --az-indicator-ox: 0px;
+  --az-indicator-oy: 0px;
+}
+
+.az-indicator {
+  position: absolute;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--az-font-sans);
+  font-size: var(--az-text-label-sm-size);
+  line-height: 1;
+  font-weight: var(--az-text-label-sm-weight);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  pointer-events: auto;
+}
+
+/* Shapes */
+.az-indicator--pill {
+  padding: 2px 7px;
+  border-radius: var(--az-radius-full);
+}
+
+.az-indicator--rounded {
+  padding: 2px 6px;
+  border-radius: var(--az-radius-sm);
+}
+
+.az-indicator--circle {
+  border-radius: var(--az-radius-full);
+  padding: 0;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+/* Dot mode */
+.az-indicator--dot {
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+  min-height: 14px;
+  padding: 0;
+  border-radius: var(--az-radius-full);
+}
+
+.az-indicator--pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: inherit;
+  opacity: 0.7;
+  animation: az-ping 1.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Ring cutout */
+.az-indicator--ring {
+  box-shadow: 0 0 0 2px var(--az-indicator-ring);
+}
+
+/* Tones */
+.az-indicator--tone-primary {
+  background-color: var(--az-color-primary);
+  color: var(--az-color-on-primary);
+}
+.az-indicator--tone-primary-container {
+  background-color: var(--az-color-primary-container);
+  color: var(--az-color-on-primary-container);
+}
+.az-indicator--tone-tertiary {
+  background-color: var(--az-color-tertiary);
+  color: var(--az-color-on-primary);
+}
+.az-indicator--tone-tertiary-container {
+  background-color: var(--az-color-tertiary-container);
+  color: var(--az-color-on-tertiary-container);
+}
+.az-indicator--tone-secondary-container {
+  background-color: var(--az-color-secondary-container);
+  color: var(--az-color-on-secondary-container);
+}
+.az-indicator--tone-error {
+  background-color: var(--az-color-error);
+  color: var(--az-color-on-error);
+}
+.az-indicator--tone-error-container {
+  background-color: var(--az-color-error-container);
+  color: var(--az-color-on-error-container);
+}
+.az-indicator--tone-neutral {
+  background-color: var(--az-color-outline);
+  color: var(--az-color-on-surface);
+}
+.az-indicator--tone-surface {
+  background-color: var(--az-color-surface);
+  color: var(--az-color-on-surface);
+  box-shadow: var(--az-shadow-sm);
+}
+
+/* 9-Point Anchor Placement */
+.az-indicator--top-left {
+  top: -6px;
+  left: -6px;
+  transform: translate(var(--az-indicator-ox), var(--az-indicator-oy));
+}
+.az-indicator--top-center {
+  top: -6px;
+  left: 50%;
+  transform: translate(calc(-50% + var(--az-indicator-ox)), var(--az-indicator-oy));
+}
+.az-indicator--top-right {
+  top: -6px;
+  right: -6px;
+  transform: translate(var(--az-indicator-ox), var(--az-indicator-oy));
+}
+
+.az-indicator--left-center {
+  top: 50%;
+  left: -6px;
+  transform: translate(var(--az-indicator-ox), calc(-50% + var(--az-indicator-oy)));
+}
+.az-indicator--center {
+  top: 50%;
+  left: 50%;
+  transform: translate(calc(-50% + var(--az-indicator-ox)), calc(-50% + var(--az-indicator-oy)));
+}
+.az-indicator--right-center {
+  top: 50%;
+  right: -6px;
+  transform: translate(var(--az-indicator-ox), calc(-50% + var(--az-indicator-oy)));
+}
+
+.az-indicator--bottom-left {
+  bottom: -6px;
+  left: -6px;
+  transform: translate(var(--az-indicator-ox), var(--az-indicator-oy));
+}
+.az-indicator--bottom-center {
+  bottom: -6px;
+  left: 50%;
+  transform: translate(calc(-50% + var(--az-indicator-ox)), var(--az-indicator-oy));
+}
+.az-indicator--bottom-right {
+  bottom: -6px;
+  right: -6px;
+  transform: translate(var(--az-indicator-ox), var(--az-indicator-oy));
+}
+

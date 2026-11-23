@@ -1,0 +1,289 @@
+/* Azurite ConsoleMockup — Structured CLI & Terminal Frame */
+
+.az-console,
+.az-console--theme-light {
+  --az-console-bg: var(--az-color-surface);
+  --az-console-header-bg: var(--az-color-surface-container-low);
+  --az-console-border: var(--az-color-outline-variant);
+  --az-console-ink: #0f172a;
+  --az-console-muted: #64748b;
+  --az-console-primary: #0a36d1;
+  --az-console-success: #047857;
+  --az-console-warning: #b45309;
+  --az-console-error: #ba1a1a;
+  --az-console-highlight: rgba(10, 54, 209, 0.07);
+  --az-console-btn-bg: var(--az-color-surface-container);
+  --az-console-btn-hover: var(--az-color-surface-container-high);
+
+  width: 100%;
+  min-width: 0;
+  border-radius: var(--az-radius-xl);
+  border: 1px solid var(--az-console-border);
+  background-color: var(--az-console-bg);
+  color: var(--az-console-ink);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  box-shadow: var(--az-shadow-sm);
+}
+
+[data-theme='dark'] .az-console--theme-auto,
+.dark .az-console--theme-auto,
+.az-console--theme-dark {
+  --az-console-bg: #0b1018;
+  --az-console-header-bg: #121925;
+  --az-console-border: #233044;
+  --az-console-ink: #e2e8f0;
+  --az-console-muted: #94a3b8;
+  --az-console-primary: #93b4ff;
+  --az-console-success: #34d399;
+  --az-console-warning: #fbbf24;
+  --az-console-error: #fb7185;
+  --az-console-highlight: rgba(147, 180, 255, 0.11);
+  --az-console-btn-bg: #1c2536;
+  --az-console-btn-hover: #253147;
+}
+
+[data-theme='dark'] .az-console--theme-light,
+.dark .az-console--theme-light {
+  --az-console-bg: #ffffff;
+  --az-console-header-bg: #f8fafc;
+  --az-console-border: #e2e8f0;
+  --az-console-ink: #0f172a;
+  --az-console-muted: #64748b;
+  --az-console-primary: #0a36d1;
+  --az-console-success: #047857;
+  --az-console-warning: #b45309;
+  --az-console-error: #ba1a1a;
+  --az-console-highlight: rgba(10, 54, 209, 0.07);
+  --az-console-btn-bg: #f1f5f9;
+  --az-console-btn-hover: #e2e8f0;
+}
+
+/* Shared Window Chrome Primitives */
+.az-mockup-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.az-mockup-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  opacity: 0.85;
+  transition: opacity var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-mockup-dot--close { background-color: #ef4444; }
+.az-mockup-dot--min { background-color: #f59e0b; }
+.az-mockup-dot--max { background-color: #10b981; }
+
+.az-mockup-win-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 4px;
+  flex-shrink: 0;
+}
+
+.az-mockup-win-btn {
+  width: 26px;
+  height: 24px;
+  border-radius: var(--az-radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.az-console .az-mockup-win-controls {
+  color: var(--az-console-muted);
+}
+
+/* Header Bar */
+.az-console__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 44px;
+  padding: 8px 14px;
+  background-color: var(--az-console-header-bg);
+  border-bottom: 1px solid var(--az-console-border);
+}
+
+.az-console__header:hover .az-mockup-dot {
+  opacity: 1;
+}
+
+.az-console__head-start {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.az-console__title-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.az-console__title-icon {
+  color: var(--az-console-muted);
+  flex-shrink: 0;
+}
+
+.az-console__title {
+  font-size: var(--az-text-label-md-size);
+  line-height: var(--az-text-label-md-line);
+  font-weight: 600;
+  color: var(--az-console-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.az-console__head-end {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.az-console__action-btn {
+  appearance: none;
+  border: 1px solid transparent;
+  background-color: var(--az-console-btn-bg);
+  color: var(--az-console-ink);
+  font-family: inherit;
+  font-size: var(--az-text-label-md-size);
+  line-height: 1;
+  font-weight: 600;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: var(--az-radius-full);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition:
+    background-color var(--az-duration-state-change) var(--az-ease-state-change),
+    color var(--az-duration-state-change) var(--az-ease-state-change),
+    transform var(--az-duration-spring-press) var(--az-ease-spring-press);
+}
+
+.az-console__action-btn:hover {
+  background-color: var(--az-console-btn-hover);
+}
+
+.az-console__action-btn:active {
+  transform: scale(0.95);
+}
+
+.az-console__action-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--az-focus-ring);
+}
+
+.az-console__action-btn--copied {
+  color: var(--az-console-success);
+  border-color: color-mix(in srgb, var(--az-console-success) 35%, transparent);
+}
+
+/* Terminal Viewport */
+.az-console__body {
+  padding: 14px 0;
+  font-family: var(--az-font-mono);
+  font-size: 13px;
+  line-height: 1.65;
+  overflow: auto;
+  scrollbar-width: thin;
+  display: flex;
+  flex-direction: column;
+}
+
+.az-console__line {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 1px 16px;
+  min-width: max-content;
+  color: var(--az-console-ink);
+  border-left: 2px solid transparent;
+}
+
+.az-console--wrap .az-console__line {
+  min-width: 0;
+}
+
+.az-console__line--highlight {
+  background-color: var(--az-console-highlight);
+  border-left-color: var(--az-console-primary);
+}
+
+.az-console__line--tone-muted .az-console__text { color: var(--az-console-muted); }
+.az-console__line--tone-primary .az-console__text { color: var(--az-console-primary); }
+.az-console__line--tone-success .az-console__text { color: var(--az-console-success); }
+.az-console__line--tone-warning .az-console__text { color: var(--az-console-warning); }
+.az-console__line--tone-error .az-console__text { color: var(--az-console-error); }
+
+.az-console__line--tone-success .az-console__prefix { color: var(--az-console-success); }
+.az-console__line--tone-warning .az-console__prefix { color: var(--az-console-warning); }
+.az-console__line--tone-error .az-console__prefix { color: var(--az-console-error); }
+.az-console__line--tone-primary .az-console__prefix { color: var(--az-console-primary); }
+
+.az-console__prefix {
+  flex: 0 0 auto;
+  min-width: 14px;
+  font-variant-numeric: tabular-nums;
+  color: var(--az-console-muted);
+  user-select: none;
+  font-weight: 600;
+}
+
+.az-console__text {
+  flex: 1 1 auto;
+  white-space: pre;
+}
+
+.az-console--wrap .az-console__text {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.az-console__line--animated {
+  animation: az-console-line-in 180ms var(--az-ease-surface-enter) both;
+}
+
+.az-console__cursor {
+  display: inline-block;
+  vertical-align: -2px;
+  width: 7px;
+  height: 1.15em;
+  margin-left: 4px;
+  border-radius: 1px;
+  background-color: var(--az-console-primary);
+  animation: az-cursor-blink 1.05s steps(1) infinite;
+}
+
+@keyframes az-console-line-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes az-cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}

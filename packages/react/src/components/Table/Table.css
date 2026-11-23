@@ -1,0 +1,340 @@
+.az-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  font-family: var(--az-font-sans);
+}
+
+.az-table-wrap--plain {
+  background: transparent;
+}
+
+.az-table-wrap--tonal {
+  background-color: var(--az-color-surface-container-low);
+  border-radius: var(--az-radius-xl);
+  padding: var(--az-space-gutter-md);
+}
+
+.az-table-wrap--outlined {
+  background-color: var(--az-color-surface);
+  border: 1px solid var(--az-color-outline-variant);
+  border-radius: var(--az-radius-xl);
+  padding: var(--az-space-gutter-md);
+}
+
+.az-table-wrap--striped {
+  padding: 0;
+  overflow: hidden;
+}
+
+.az-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+  color: var(--az-color-on-surface);
+}
+
+.az-table__caption {
+  caption-side: bottom;
+  padding: 10px 16px;
+  font-size: var(--az-text-body-sm-size);
+  line-height: var(--az-text-body-sm-line);
+  color: var(--az-color-on-surface-variant);
+  text-align: left;
+}
+
+.az-table--sticky-header thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: var(--az-color-surface);
+}
+
+.az-table-wrap--tonal .az-table--sticky-header thead th {
+  background-color: var(--az-color-surface-container-low);
+}
+
+.az-table__th {
+  font-size: var(--az-text-label-md-size);
+  line-height: var(--az-text-label-md-line);
+  font-weight: var(--az-text-label-md-weight);
+  letter-spacing: var(--az-text-label-md-tracking);
+  color: var(--az-color-on-surface-variant);
+  white-space: nowrap;
+}
+
+.az-table__sort-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-table__sort-btn:hover {
+  color: var(--az-color-primary);
+}
+
+.az-table__sort-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--az-focus-ring);
+  border-radius: var(--az-radius-sm);
+}
+
+/* Plain non-hoverable table: classic full-bleed borders */
+.az-table-wrap--plain .az-table:not(.az-table--hoverable):not(.az-table--striped) thead th {
+  border-bottom: 1px solid var(--az-color-outline);
+}
+
+.az-table-wrap--plain .az-table:not(.az-table--hoverable):not(.az-table--striped) tbody .az-table__row + .az-table__row .az-table__cell,
+.az-table-wrap--plain .az-table:not(.az-table--hoverable):not(.az-table--striped) tfoot .az-table__row .az-table__cell {
+  border-top: 1px solid var(--az-color-outline-variant);
+}
+
+/* Non-striped tonal, outlined, or hoverable tables:
+   trimmed 1px hairline lines inset by row corner radius (12px) */
+.az-table-wrap--tonal .az-table:not(.az-table--striped) thead th,
+.az-table-wrap--outlined .az-table:not(.az-table--striped) thead th,
+.az-table--hoverable:not(.az-table--striped) thead th {
+  background-image: linear-gradient(var(--az-color-outline-variant), var(--az-color-outline-variant));
+  background-repeat: no-repeat;
+  background-position: 0 bottom;
+  background-size: 100% 1px;
+}
+
+.az-table-wrap--tonal .az-table:not(.az-table--striped) thead th:first-child,
+.az-table-wrap--outlined .az-table:not(.az-table--striped) thead th:first-child,
+.az-table--hoverable:not(.az-table--striped) thead th:first-child {
+  background-position: 12px bottom;
+  background-size: calc(100% - 12px) 1px;
+}
+
+.az-table-wrap--tonal .az-table:not(.az-table--striped) thead th:last-child,
+.az-table-wrap--outlined .az-table:not(.az-table--striped) thead th:last-child,
+.az-table--hoverable:not(.az-table--striped) thead th:last-child {
+  background-position: 0 bottom;
+  background-size: calc(100% - 12px) 1px;
+}
+
+.az-table-wrap--tonal .az-table:not(.az-table--striped) thead th:only-child,
+.az-table-wrap--outlined .az-table:not(.az-table--striped) thead th:only-child,
+.az-table--hoverable:not(.az-table--striped) thead th:only-child {
+  background-position: 12px bottom;
+  background-size: calc(100% - 24px) 1px;
+}
+
+.az-table-wrap--tonal .az-table:not(.az-table--striped) tbody .az-table__row + .az-table__row .az-table__cell,
+.az-table-wrap--outlined .az-table:not(.az-table--striped) tbody .az-table__row + .az-table__row .az-table__cell,
+.az-table--hoverable:not(.az-table--striped) tbody .az-table__row + .az-table__row .az-table__cell,
+.az-table-wrap--tonal .az-table:not(.az-table--striped) tfoot .az-table__row .az-table__cell,
+.az-table-wrap--outlined .az-table:not(.az-table--striped) tfoot .az-table__row .az-table__cell,
+.az-table--hoverable:not(.az-table--striped) tfoot .az-table__row .az-table__cell {
+  background-image: linear-gradient(var(--az-color-outline-variant), var(--az-color-outline-variant));
+  background-repeat: no-repeat;
+  background-position: 0 top;
+  background-size: 100% 1px;
+}
+
+.az-table-wrap--tonal .az-table:not(.az-table--striped) tbody .az-table__row + .az-table__row .az-table__cell:first-child,
+.az-table-wrap--outlined .az-table:not(.az-table--striped) tbody .az-table__row + .az-table__row .az-table__cell:first-child,
+.az-table--hoverable:not(.az-table--striped) tbody .az-table__row + .az-table__row .az-table__cell:first-child,
+.az-table-wrap--tonal .az-table:not(.az-table--striped) tfoot .az-table__row .az-table__cell:first-child,
+.az-table-wrap--outlined .az-table:not(.az-table--striped) tfoot .az-table__row .az-table__cell:first-child,
+.az-table--hoverable:not(.az-table--striped) tfoot .az-table__row .az-table__cell:first-child {
+  background-position: 12px top;
+  background-size: calc(100% - 12px) 1px;
+}
+
+.az-table-wrap--tonal .az-table:not(.az-table--striped) tbody .az-table__row + .az-table__row .az-table__cell:last-child,
+.az-table-wrap--outlined .az-table:not(.az-table--striped) tbody .az-table__row + .az-table__row .az-table__cell:last-child,
+.az-table--hoverable:not(.az-table--striped) tbody .az-table__row + .az-table__row .az-table__cell:last-child,
+.az-table-wrap--tonal .az-table:not(.az-table--striped) tfoot .az-table__row .az-table__cell:last-child,
+.az-table-wrap--outlined .az-table:not(.az-table--striped) tfoot .az-table__row .az-table__cell:last-child,
+.az-table--hoverable:not(.az-table--striped) tfoot .az-table__row .az-table__cell:last-child {
+  background-position: 0 top;
+  background-size: calc(100% - 12px) 1px;
+}
+
+.az-table-wrap--tonal .az-table:not(.az-table--striped) tbody .az-table__row + .az-table__row .az-table__cell:only-child,
+.az-table-wrap--outlined .az-table:not(.az-table--striped) tbody .az-table__row + .az-table__row .az-table__cell:only-child,
+.az-table--hoverable:not(.az-table--striped) tbody .az-table__row + .az-table__row .az-table__cell:only-child {
+  background-position: 12px top;
+  background-size: calc(100% - 24px) 1px;
+}
+
+/* Rows & Cell Highlights */
+.az-table__row .az-table__cell {
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+              color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-table__row--interactive {
+  cursor: pointer;
+}
+
+.az-table__row--interactive:hover .az-table__cell,
+.az-table--hoverable tbody .az-table__row:hover .az-table__cell {
+  background-color: var(--az-color-surface-container);
+}
+
+.az-table-wrap--outlined .az-table--hoverable tbody .az-table__row:hover .az-table__cell {
+  background-color: var(--az-color-primary-container);
+}
+
+.az-table__row--active .az-table__cell,
+.az-table__row--active:hover .az-table__cell {
+  background-color: var(--az-color-primary-container) !important;
+  color: var(--az-color-on-primary-container);
+}
+
+/* Remove hairlines adjacent to active or hovered rows so corners stay clean */
+.az-table__row--active .az-table__cell,
+.az-table__row--active + .az-table__row .az-table__cell,
+.az-table__row--interactive:hover .az-table__cell,
+.az-table__row--interactive:hover + .az-table__row .az-table__cell,
+.az-table--hoverable tbody .az-table__row:hover .az-table__cell,
+.az-table--hoverable tbody .az-table__row:hover + .az-table__row .az-table__cell {
+  background-image: none;
+}
+
+.az-table:has(tbody > .az-table__row:first-child:hover) thead th,
+.az-table:has(tbody > .az-table__row--active:first-child) thead th {
+  background-image: none;
+}
+
+/* Consistent 12px Pill-Card Radius on Active & Hovered Rows */
+.az-table__row--active .az-table__cell:first-child,
+.az-table__row--interactive:hover .az-table__cell:first-child,
+.az-table--hoverable tbody .az-table__row:hover .az-table__cell:first-child {
+  border-top-left-radius: var(--az-radius-md);
+  border-bottom-left-radius: var(--az-radius-md);
+}
+
+.az-table__row--active .az-table__cell:last-child,
+.az-table__row--interactive:hover .az-table__cell:last-child,
+.az-table--hoverable tbody .az-table__row:hover .az-table__cell:last-child {
+  border-top-right-radius: var(--az-radius-md);
+  border-bottom-right-radius: var(--az-radius-md);
+}
+
+.az-table__row--active .az-table__cell--muted {
+  color: var(--az-color-on-primary-container);
+}
+
+/* Hover Row Action Cue */
+.az-table__row-cue {
+  opacity: 0.4;
+  color: var(--az-color-on-surface-variant);
+  transition: opacity var(--az-duration-state-change) var(--az-ease-state-change),
+              color var(--az-duration-state-change) var(--az-ease-state-change),
+              transform var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-table__row:hover .az-table__row-cue {
+  opacity: 1;
+  color: var(--az-color-primary);
+  transform: translateX(2px);
+}
+
+/* Zebra Striped */
+.az-table--striped thead tr th {
+  background-color: var(--az-color-surface-container);
+  color: var(--az-color-on-surface);
+  border-bottom: 1px solid var(--az-color-outline-variant);
+  padding: 14px 20px;
+}
+
+.az-table--striped tbody .az-table__row:nth-child(odd) .az-table__cell {
+  background-color: var(--az-color-surface);
+}
+
+.az-table--striped tbody .az-table__row:nth-child(even) .az-table__cell {
+  background-color: var(--az-color-surface-container-low);
+}
+
+.az-table--striped .az-table__cell {
+  padding: 14px 20px;
+}
+
+/* Alignment & Cell Emphasis */
+.az-table__align-left { text-align: left; }
+.az-table__align-center { text-align: center; }
+.az-table__align-right { text-align: right; }
+
+.az-table__cell--numeric {
+  font-variant-numeric: tabular-nums;
+}
+
+.az-table__cell--default {
+  color: var(--az-color-on-surface);
+}
+
+.az-table__cell--muted {
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-table__cell--primary {
+  color: var(--az-color-primary);
+  font-weight: var(--az-text-label-md-weight);
+}
+
+.az-table__cell--title {
+  font-size: var(--az-text-title-md-size);
+  line-height: var(--az-text-title-md-line);
+  font-weight: var(--az-text-title-md-weight);
+  color: var(--az-color-on-surface);
+}
+
+.az-table__row--active .az-table__cell--title {
+  color: var(--az-color-on-primary-container);
+}
+
+.az-table__cell--headline {
+  font-size: var(--az-text-headline-sm-size);
+  line-height: var(--az-text-headline-sm-line);
+  font-weight: var(--az-text-headline-sm-weight);
+  letter-spacing: var(--az-text-headline-sm-tracking);
+  color: var(--az-color-on-surface);
+}
+
+/* Density Scales */
+.az-table--density-compact .az-table__th {
+  padding: 8px 12px;
+  font-size: var(--az-text-label-sm-size);
+  line-height: var(--az-text-label-sm-line);
+}
+
+.az-table--density-compact .az-table__cell {
+  padding: 8px 12px;
+  font-size: var(--az-text-body-sm-size);
+  line-height: var(--az-text-body-sm-line);
+}
+
+.az-table--density-default .az-table__th {
+  padding: 12px 16px;
+}
+
+.az-table--density-default .az-table__cell {
+  padding: 16px;
+  font-size: var(--az-text-body-md-size);
+  line-height: var(--az-text-body-md-line);
+}
+
+.az-table--density-spacious .az-table__th {
+  padding: 16px 24px;
+  font-size: var(--az-text-label-lg-size);
+  line-height: var(--az-text-label-lg-line);
+}
+
+.az-table--density-spacious .az-table__cell {
+  padding: 20px 24px;
+  font-size: var(--az-text-body-lg-size);
+  line-height: var(--az-text-body-lg-line);
+}

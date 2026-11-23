@@ -1,0 +1,298 @@
+/* Azurite Dock — Bottom Navigation Bars Across 6 Calibrated Heights */
+
+.az-dock {
+  --az-dock-cols: 4;
+  display: inline-flex;
+  align-items: center;
+  background: var(--az-color-surface);
+  border: 1px solid var(--az-color-outline-variant);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
+  box-sizing: border-box;
+  font-family: var(--az-font-sans);
+}
+
+[data-theme='dark'] .az-dock,
+.dark .az-dock {
+  box-shadow: var(--az-shadow-md);
+}
+
+.az-dock:not(.az-dock--floating) {
+  box-shadow: none;
+}
+
+/* XS: 48px Floating Icon-Only Pill */
+.az-dock--xs {
+  width: fit-content;
+  max-width: 100%;
+  align-self: flex-start;
+  height: 48px;
+  padding-inline: 8px;
+  gap: 4px;
+  border-radius: var(--az-radius-full);
+}
+
+/* SM: 56px Floating Horizontal Pill */
+.az-dock--sm {
+  width: fit-content;
+  max-width: 100%;
+  align-self: flex-start;
+  height: 56px;
+  padding-inline: 12px;
+  gap: 8px;
+  border-radius: var(--az-radius-full);
+}
+
+/* Regular (Default): 64px M3 Stacked Pill Grid */
+.az-dock--regular {
+  width: 100%;
+  max-width: 512px;
+  height: 64px;
+  padding-inline: 12px;
+  border-radius: var(--az-radius-xl);
+  display: grid;
+  grid-template-columns: repeat(var(--az-dock-cols), minmax(0, 1fr));
+}
+
+/* MD: 72px Tall Stacked Grid */
+.az-dock--md {
+  width: 100%;
+  max-width: 576px;
+  height: 72px;
+  padding-inline: 16px;
+  border-radius: var(--az-radius-xl);
+  display: grid;
+  grid-template-columns: repeat(var(--az-dock-cols), minmax(0, 1fr));
+}
+
+/* LG: 84px Spacious Horizontal Bar + Trailing CTA Slot */
+.az-dock--lg {
+  width: 100%;
+  max-width: 672px;
+  height: 84px;
+  padding-inline: 24px;
+  gap: var(--az-space-gutter-md);
+  justify-content: space-between;
+  border-radius: var(--az-radius-xl);
+}
+
+.az-dock__nav-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+
+.az-dock__action {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* XL: 96px Full-Width Studio Command Tiles */
+.az-dock--xl {
+  width: 100%;
+  height: 96px;
+  padding-inline: 16px;
+  gap: 12px;
+  border-radius: var(--az-radius-xl);
+  display: grid;
+  grid-template-columns: repeat(var(--az-dock-cols), minmax(0, 1fr));
+}
+
+.az-dock--full-width {
+  width: 100%;
+  align-self: stretch;
+}
+
+/* Dock Item */
+.az-dock__item {
+  border: 0;
+  background: transparent;
+  color: var(--az-color-on-surface-variant);
+  font-family: var(--az-font-sans);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+    color var(--az-duration-state-change) var(--az-ease-state-change),
+    transform var(--az-duration-spring-press) var(--az-ease-spring-press);
+}
+
+.az-dock__item:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.az-dock__item:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.az-dock__item:focus-visible {
+  outline: none;
+  box-shadow: var(--az-focus-ring);
+}
+
+/* Icon-only (XS) */
+.az-dock--xs .az-dock__item {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: var(--az-radius-full);
+}
+
+.az-dock--xs .az-dock__item:hover:not(:disabled):not(.az-dock__item--active) {
+  background: var(--az-color-surface-container);
+}
+
+.az-dock--xs .az-dock__item--active {
+  background: var(--az-color-primary-container);
+  color: var(--az-color-primary);
+}
+
+/* Inline SM & LG */
+.az-dock--sm .az-dock__item {
+  height: 40px;
+  padding-inline: 16px;
+  gap: 6px;
+  border-radius: var(--az-radius-full);
+}
+
+.az-dock--lg .az-dock__item {
+  padding: 12px 20px;
+  gap: 10px;
+  border-radius: var(--az-radius-full);
+}
+
+.az-dock--sm .az-dock__item:hover:not(:disabled):not(.az-dock__item--active),
+.az-dock--lg .az-dock__item:hover:not(:disabled):not(.az-dock__item--active) {
+  background: var(--az-color-surface-container);
+}
+
+.az-dock--sm .az-dock__item--active,
+.az-dock--lg .az-dock__item--active {
+  background: var(--az-color-primary-container);
+  color: var(--az-color-on-primary-container);
+}
+
+.az-dock--sm .az-dock__item--active .az-dock__icon,
+.az-dock--lg .az-dock__item--active .az-dock__icon {
+  color: var(--az-color-primary);
+}
+
+/* Stacked Regular & MD */
+.az-dock--regular .az-dock__item {
+  flex-direction: column;
+  gap: 4px;
+  padding-block: 4px;
+  border-radius: var(--az-radius-lg);
+}
+
+.az-dock--md .az-dock__item {
+  flex-direction: column;
+  gap: 6px;
+  padding-block: 6px;
+  border-radius: var(--az-radius-lg);
+}
+
+.az-dock--regular .az-dock__item:hover:not(:disabled):not(.az-dock__item--active),
+.az-dock--md .az-dock__item:hover:not(:disabled):not(.az-dock__item--active) {
+  color: var(--az-color-on-surface);
+}
+
+.az-dock__pill {
+  padding: 2px 16px;
+  border-radius: var(--az-radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+    transform var(--az-duration-spring-press) var(--az-ease-spring-press);
+}
+
+.az-dock--md .az-dock__pill {
+  padding: 4px 20px;
+}
+
+.az-dock--regular .az-dock__item:hover:not(:disabled):not(.az-dock__item--active) .az-dock__pill,
+.az-dock--md .az-dock__item:hover:not(:disabled):not(.az-dock__item--active) .az-dock__pill {
+  background: var(--az-color-surface-container);
+}
+
+.az-dock__item--active .az-dock__pill {
+  background: var(--az-color-primary-container);
+}
+
+.az-dock--regular .az-dock__item--active,
+.az-dock--md .az-dock__item--active {
+  color: var(--az-color-primary);
+}
+
+/* Tile XL */
+.az-dock--xl .az-dock__item {
+  gap: 12px;
+  padding: 16px;
+  border-radius: var(--az-radius-lg);
+  color: var(--az-color-on-surface);
+}
+
+.az-dock--xl .az-dock__item:hover:not(:disabled):not(.az-dock__item--active) {
+  background: var(--az-color-surface-container);
+}
+
+.az-dock--xl .az-dock__item--active {
+  background: var(--az-color-primary-container);
+  color: var(--az-color-on-primary-container);
+}
+
+.az-dock--xl .az-dock__item--active .az-dock__icon {
+  color: var(--az-color-primary);
+}
+
+/* Filled active Material Symbol + Label Typography per Tier */
+.az-dock__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.az-dock__item--active .az-dock__icon .material-symbols-outlined {
+  font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+}
+
+.az-dock__label {
+  white-space: nowrap;
+}
+
+.az-dock--sm .az-dock__label,
+.az-dock--regular .az-dock__label {
+  font-size: var(--az-text-label-sm-size);
+  line-height: var(--az-text-label-sm-line);
+  font-weight: var(--az-text-label-sm-weight);
+  letter-spacing: var(--az-text-label-sm-tracking);
+}
+
+.az-dock--md .az-dock__label {
+  font-size: var(--az-text-label-md-size);
+  line-height: var(--az-text-label-md-line);
+  font-weight: var(--az-text-label-md-weight);
+  letter-spacing: var(--az-text-label-md-tracking);
+}
+
+.az-dock--lg .az-dock__label {
+  font-size: var(--az-text-label-lg-size);
+  line-height: var(--az-text-label-lg-line);
+  font-weight: var(--az-text-label-lg-weight);
+  letter-spacing: var(--az-text-label-lg-tracking);
+}
+
+.az-dock--xl .az-dock__label {
+  font-size: var(--az-text-title-md-size);
+  line-height: var(--az-text-title-md-line);
+  font-weight: var(--az-text-title-md-weight);
+}
+

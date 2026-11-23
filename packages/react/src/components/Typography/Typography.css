@@ -1,0 +1,124 @@
+.az-text {
+  margin: 0;
+  font-family: var(--az-font-sans);
+  transition: color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-text--display-lg {
+  font-size: var(--az-text-display-lg-size);
+  line-height: var(--az-text-display-lg-line);
+  font-weight: var(--az-text-display-lg-weight);
+  letter-spacing: var(--az-text-display-lg-tracking);
+}
+.az-text--display-lg-mobile {
+  font-size: var(--az-text-display-lg-mobile-size);
+  line-height: var(--az-text-display-lg-mobile-line);
+  font-weight: var(--az-text-display-lg-mobile-weight);
+  letter-spacing: var(--az-text-display-lg-mobile-tracking);
+}
+.az-text--display-md {
+  font-size: var(--az-text-display-md-size);
+  line-height: var(--az-text-display-md-line);
+  font-weight: var(--az-text-display-md-weight);
+  letter-spacing: var(--az-text-display-md-tracking);
+}
+.az-text--display-md-mobile {
+  font-size: var(--az-text-display-md-mobile-size);
+  line-height: var(--az-text-display-md-mobile-line);
+  font-weight: var(--az-text-display-md-mobile-weight);
+  letter-spacing: var(--az-text-display-md-mobile-tracking);
+}
+.az-text--headline-lg {
+  font-size: var(--az-text-headline-lg-size);
+  line-height: var(--az-text-headline-lg-line);
+  font-weight: var(--az-text-headline-lg-weight);
+  letter-spacing: var(--az-text-headline-lg-tracking);
+}
+.az-text--headline-lg-mobile {
+  font-size: var(--az-text-headline-lg-mobile-size);
+  line-height: var(--az-text-headline-lg-mobile-line);
+  font-weight: var(--az-text-headline-lg-mobile-weight);
+  letter-spacing: var(--az-text-headline-lg-mobile-tracking);
+}
+.az-text--headline-md {
+  font-size: var(--az-text-headline-md-size);
+  line-height: var(--az-text-headline-md-line);
+  font-weight: var(--az-text-headline-md-weight);
+  letter-spacing: var(--az-text-headline-md-tracking);
+}
+.az-text--headline-sm {
+  font-size: var(--az-text-headline-sm-size);
+  line-height: var(--az-text-headline-sm-line);
+  font-weight: var(--az-text-headline-sm-weight);
+  letter-spacing: var(--az-text-headline-sm-tracking);
+}
+.az-text--title-lg {
+  font-size: var(--az-text-title-lg-size);
+  line-height: var(--az-text-title-lg-line);
+  font-weight: var(--az-text-title-lg-weight);
+  letter-spacing: var(--az-text-title-lg-tracking);
+}
+.az-text--title-md {
+  font-size: var(--az-text-title-md-size);
+  line-height: var(--az-text-title-md-line);
+  font-weight: var(--az-text-title-md-weight);
+  letter-spacing: var(--az-text-title-md-tracking);
+}
+.az-text--body-lg {
+  font-size: var(--az-text-body-lg-size);
+  line-height: var(--az-text-body-lg-line);
+  font-weight: var(--az-text-body-lg-weight);
+  letter-spacing: var(--az-text-body-lg-tracking);
+}
+.az-text--body-md {
+  font-size: var(--az-text-body-md-size);
+  line-height: var(--az-text-body-md-line);
+  font-weight: var(--az-text-body-md-weight);
+  letter-spacing: var(--az-text-body-md-tracking);
+}
+.az-text--body-sm {
+  font-size: var(--az-text-body-sm-size);
+  line-height: var(--az-text-body-sm-line);
+  font-weight: var(--az-text-body-sm-weight);
+  letter-spacing: var(--az-text-body-sm-tracking);
+}
+.az-text--label-lg {
+  font-size: var(--az-text-label-lg-size);
+  line-height: var(--az-text-label-lg-line);
+  font-weight: var(--az-text-label-lg-weight);
+  letter-spacing: var(--az-text-label-lg-tracking);
+}
+.az-text--label-md {
+  font-size: var(--az-text-label-md-size);
+  line-height: var(--az-text-label-md-line);
+  font-weight: var(--az-text-label-md-weight);
+  letter-spacing: var(--az-text-label-md-tracking);
+}
+.az-text--label-sm {
+  font-size: var(--az-text-label-sm-size);
+  line-height: var(--az-text-label-sm-line);
+  font-weight: var(--az-text-label-sm-weight);
+  letter-spacing: var(--az-text-label-sm-tracking);
+}
+
+/* Color tones */
+.az-text--tone-default { color: var(--az-color-on-surface); }
+.az-text--tone-muted { color: var(--az-color-on-surface-variant); }
+.az-text--tone-primary { color: var(--az-color-primary); }
+.az-text--tone-secondary { color: var(--az-color-secondary); }
+.az-text--tone-tertiary { color: var(--az-color-on-tertiary-container); }
+.az-text--tone-success { color: var(--az-color-success); }
+.az-text--tone-warning { color: var(--az-color-warning-text); }
+.az-text--tone-error { color: var(--az-color-error); }
+.az-text--tone-inherit { color: inherit; }
+
+/* Modifiers */
+.az-text--tabular { font-variant-numeric: tabular-nums; }
+.az-text--balance { text-wrap: balance; }
+.az-text--pretty { text-wrap: pretty; }
+.az-text--truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+

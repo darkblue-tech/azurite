@@ -1,0 +1,165 @@
+/* Azurite Design System — Shared Keyframes, Utilities & AI Ambient Aura */
+
+@keyframes az-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes az-spin-reverse {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes az-dot-pulse {
+  0%, 80%, 100% { transform: scale(0.55); opacity: 0.35; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes az-ball-bounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.55; }
+  40% { transform: translateY(-42%); opacity: 1; }
+}
+
+@keyframes az-bar-wave {
+  0%, 40%, 100% { transform: scaleY(0.35); opacity: 0.45; }
+  20% { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes az-pulse-wave {
+  0% { transform: scale(0.2); opacity: 0.9; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+@keyframes az-ring-expand {
+  0% { transform: scale(0.25); opacity: 1; }
+  75% { opacity: 0.35; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+@keyframes az-indeterminate-slide {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(80%); }
+  100% { transform: translateX(260%); }
+}
+
+@keyframes az-spoke-fade {
+  0%, 100% { opacity: 0.15; }
+  15% { opacity: 1; }
+}
+
+@keyframes az-ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes az-float-upload {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes az-aura-glow-pulse {
+  0%, 100% {
+    box-shadow: var(--az-aura-glow);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(10, 54, 209, 0.24),
+      0 6px 20px -2px rgba(6, 182, 212, 0.24),
+      0 10px 28px -4px rgba(139, 92, 246, 0.24);
+  }
+}
+
+@keyframes az-fade-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes az-fade-slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(4px) scale(0.975);
+  }
+}
+
+@keyframes az-toast-in-top {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes az-toast-in-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes az-toast-pulse {
+  0% { transform: scale(1); }
+  35% { transform: scale(0.94); opacity: 0.45; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes az-shake-subtle {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+/* AI RGB Ambient Aura Effect (strictly outer halo so control fill stays solid/clean) */
+.az-aura {
+  position: relative;
+  box-shadow: var(--az-aura-glow);
+}
+
+.az-aura:hover,
+.az-aura:focus-within {
+  animation: az-aura-glow-pulse 2.8s ease-in-out infinite;
+}
+
+/* Utilities */
+.az-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.az-tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [class*='az-'] {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+

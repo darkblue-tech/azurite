@@ -1,0 +1,139 @@
+/* Azurite Skeleton — Pulse, Shimmer Gradient & M3 Expressive Character Wave */
+
+@keyframes az-skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+@keyframes az-skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes az-skeleton-wave {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    color: var(--az-color-on-surface-variant);
+    opacity: 0.72;
+  }
+  28% {
+    transform: translateY(-0.09em) scale(1.04);
+    color: var(--az-color-primary);
+    opacity: 1;
+  }
+  52% {
+    transform: translateY(0.02em) scale(0.99);
+    color: var(--az-color-on-surface);
+    opacity: 0.95;
+  }
+  72% {
+    transform: translateY(0) scale(1);
+    color: var(--az-color-on-surface-variant);
+    opacity: 0.8;
+  }
+}
+
+.az-skeleton {
+  display: block;
+  background-color: var(--az-skeleton-base);
+  flex-shrink: 0;
+}
+
+.az-skeleton--pulse {
+  animation: az-skeleton-pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.az-skeleton--shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--az-skeleton-base) 0%,
+    var(--az-skeleton-highlight) 45%,
+    var(--az-skeleton-base) 90%
+  );
+  background-size: 200% 100%;
+  animation: az-skeleton-shimmer 1.9s cubic-bezier(0.2, 0, 0, 1) infinite;
+}
+
+.az-skeleton--rect { border-radius: 0; }
+.az-skeleton--rounded { border-radius: var(--az-radius-md); }
+.az-skeleton--circle { border-radius: var(--az-radius-full); }
+.az-skeleton--pill { border-radius: var(--az-radius-full); }
+.az-skeleton--text {
+  height: 12px;
+  border-radius: var(--az-radius-full);
+}
+
+.az-skeleton-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Expressive Character-Wave Typography */
+.az-skeleton-expressive {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin: 0;
+}
+
+.az-skeleton-char {
+  display: inline-block;
+  will-change: transform, color, opacity;
+  animation: az-skeleton-wave var(--az-char-duration, 2200ms) cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+  animation-delay: calc(var(--az-char-i, 0) * var(--az-char-stagger, 55ms));
+}
+
+.az-skeleton-space {
+  display: inline-block;
+  width: 0.28em;
+}
+
+/* Composite Card Skeleton Presets */
+.az-skeleton-card {
+  height: 100%;
+  border-radius: var(--az-radius-xl);
+  padding: var(--az-space-gutter-lg);
+  background: var(--az-color-surface-container-low);
+  border: 1px solid var(--az-color-outline-variant);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--az-space-gutter-md);
+  box-sizing: border-box;
+}
+
+.az-skeleton-card--profile {
+  align-items: center;
+  text-align: center;
+}
+
+.az-skeleton-card__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--az-space-gutter-md);
+  width: 100%;
+}
+
+.az-skeleton-card--profile .az-skeleton-card__section {
+  align-items: center;
+  padding-top: 8px;
+}
+
+.az-skeleton-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .az-skeleton--pulse,
+  .az-skeleton--shimmer,
+  .az-skeleton-char {
+    animation: none !important;
+  }
+}
+

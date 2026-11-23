@@ -1,0 +1,328 @@
+.az-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--az-font-sans);
+  white-space: nowrap;
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+              color var(--az-duration-state-change) var(--az-ease-state-change),
+              border-color var(--az-duration-state-change) var(--az-ease-state-change),
+              filter var(--az-duration-state-change) var(--az-ease-state-change),
+              box-shadow var(--az-duration-state-change) var(--az-ease-state-change),
+              transform var(--az-duration-spring-press) var(--az-ease-spring-press);
+}
+
+.az-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--az-focus-ring);
+}
+
+.az-btn:not(:disabled):not(.az-btn--loading):active {
+  transform: scale(0.95);
+}
+
+.az-btn--wide:not(:disabled):not(.az-btn--loading):active,
+.az-btn--block:not(:disabled):not(.az-btn--loading):active {
+  transform: scale(0.985);
+}
+
+/* Shapes */
+.az-btn--pill { border-radius: var(--az-radius-full); }
+.az-btn--round { border-radius: var(--az-radius-full); }
+.az-btn--square { border-radius: var(--az-radius-md); }
+.az-btn--square.az-btn--lg,
+.az-btn--square.az-btn--xl {
+  border-radius: var(--az-radius-lg);
+}
+
+/* Sizes */
+.az-btn--xs {
+  height: 28px;
+  padding: 0 12px;
+  font-size: var(--az-text-label-sm-size);
+  line-height: var(--az-text-label-sm-line);
+  font-weight: var(--az-text-label-sm-weight);
+  letter-spacing: var(--az-text-label-sm-tracking);
+  gap: 6px;
+}
+.az-btn--sm {
+  height: 32px;
+  padding: 0 16px;
+  font-size: var(--az-text-label-md-size);
+  line-height: var(--az-text-label-md-line);
+  font-weight: var(--az-text-label-md-weight);
+  letter-spacing: var(--az-text-label-md-tracking);
+  gap: 6px;
+}
+.az-btn--md {
+  height: 40px;
+  padding: 0 20px;
+  font-size: var(--az-text-label-lg-size);
+  line-height: var(--az-text-label-lg-line);
+  font-weight: var(--az-text-label-lg-weight);
+  letter-spacing: var(--az-text-label-lg-tracking);
+}
+.az-btn--lg {
+  height: 48px;
+  padding: 0 28px;
+  font-size: var(--az-text-label-lg-size);
+  line-height: var(--az-text-label-lg-line);
+  font-weight: var(--az-text-label-lg-weight);
+  letter-spacing: var(--az-text-label-lg-tracking);
+}
+.az-btn--xl {
+  height: 56px;
+  padding: 0 32px;
+  font-size: var(--az-text-title-md-size);
+  line-height: var(--az-text-title-md-line);
+  font-weight: var(--az-text-title-md-weight);
+  letter-spacing: var(--az-text-title-md-tracking);
+}
+
+/* Icon-only dimensions */
+.az-btn--icon-only { padding: 0; }
+.az-btn--icon-only.az-btn--xs { width: 28px; height: 28px; font-size: 16px; }
+.az-btn--icon-only.az-btn--sm { width: 32px; height: 32px; font-size: 18px; }
+.az-btn--icon-only.az-btn--md { width: 40px; height: 40px; font-size: 20px; }
+.az-btn--icon-only.az-btn--lg { width: 48px; height: 48px; font-size: 22px; }
+.az-btn--icon-only.az-btn--xl { width: 56px; height: 56px; font-size: 24px; }
+
+/* Widths */
+.az-btn--wide {
+  min-width: 240px;
+  height: 44px;
+  padding: 0 40px;
+}
+.az-btn--block {
+  display: flex;
+  width: 100%;
+  height: 48px;
+  padding: 0 24px;
+}
+
+/* Solid Variants */
+.az-btn--solid.az-btn--tone-primary {
+  background-color: var(--az-color-primary);
+  color: var(--az-color-on-primary);
+}
+.az-btn--solid.az-btn--tone-secondary {
+  background-color: var(--az-color-secondary);
+  color: var(--az-color-on-secondary);
+}
+.az-btn--solid.az-btn--tone-tertiary {
+  background-color: var(--az-color-on-tertiary-container);
+  color: var(--az-color-on-primary);
+}
+.az-btn--solid.az-btn--tone-neutral {
+  background-color: var(--az-color-on-surface);
+  color: var(--az-color-surface);
+}
+.az-btn--solid.az-btn--tone-error {
+  background-color: var(--az-color-error);
+  color: var(--az-color-on-error);
+}
+.az-btn--solid.az-btn--tone-success {
+  background-color: var(--az-color-success);
+  color: var(--az-color-on-success);
+}
+.az-btn--solid:not(:disabled):not(.az-btn--loading):hover {
+  filter: brightness(1.1);
+}
+
+/* Soft Tonal Variants */
+.az-btn--soft.az-btn--tone-primary {
+  background-color: var(--az-color-primary-container);
+  color: var(--az-color-on-primary-container);
+}
+.az-btn--soft.az-btn--tone-secondary {
+  background-color: var(--az-color-secondary-container);
+  color: var(--az-color-on-secondary-container);
+}
+.az-btn--soft.az-btn--tone-tertiary {
+  background-color: var(--az-color-tertiary-container);
+  color: var(--az-color-on-tertiary-container);
+}
+.az-btn--soft.az-btn--tone-neutral {
+  background-color: var(--az-color-surface-container-high);
+  color: var(--az-color-on-surface);
+}
+.az-btn--soft.az-btn--tone-error {
+  background-color: var(--az-color-error-container);
+  color: var(--az-color-on-error-container);
+}
+.az-btn--soft.az-btn--tone-success {
+  background-color: var(--az-color-success-container);
+  color: var(--az-color-on-success-container);
+}
+.az-btn--soft:not(:disabled):not(.az-btn--loading):hover {
+  filter: brightness(0.95);
+}
+
+/* Outline & Dashed Variants */
+.az-btn--outline,
+.az-btn--dashed {
+  background-color: var(--az-color-surface);
+}
+.az-btn--dashed {
+  border-style: dashed;
+}
+
+.az-btn--outline.az-btn--tone-primary,
+.az-btn--dashed.az-btn--tone-primary {
+  border-color: var(--az-color-primary);
+  color: var(--az-color-primary);
+}
+.az-btn--outline.az-btn--tone-primary:not(:disabled):hover,
+.az-btn--dashed.az-btn--tone-primary:not(:disabled):hover {
+  background-color: var(--az-color-primary-container);
+}
+
+.az-btn--outline.az-btn--tone-secondary,
+.az-btn--dashed.az-btn--tone-secondary {
+  border-color: var(--az-color-secondary);
+  color: var(--az-color-secondary);
+}
+.az-btn--outline.az-btn--tone-secondary:not(:disabled):hover,
+.az-btn--dashed.az-btn--tone-secondary:not(:disabled):hover {
+  background-color: var(--az-color-secondary-container);
+}
+
+.az-btn--outline.az-btn--tone-tertiary,
+.az-btn--dashed.az-btn--tone-tertiary {
+  border-color: var(--az-color-on-tertiary-container);
+  color: var(--az-color-on-tertiary-container);
+}
+.az-btn--outline.az-btn--tone-tertiary:not(:disabled):hover,
+.az-btn--dashed.az-btn--tone-tertiary:not(:disabled):hover {
+  background-color: var(--az-color-tertiary-container);
+}
+
+.az-btn--outline.az-btn--tone-neutral,
+.az-btn--dashed.az-btn--tone-neutral {
+  border-color: var(--az-color-outline);
+  color: var(--az-color-on-surface);
+}
+.az-btn--outline.az-btn--tone-neutral:not(:disabled):hover,
+.az-btn--dashed.az-btn--tone-neutral:not(:disabled):hover {
+  background-color: var(--az-color-surface-container-low);
+}
+
+.az-btn--outline.az-btn--tone-error,
+.az-btn--dashed.az-btn--tone-error {
+  border-color: var(--az-color-error);
+  color: var(--az-color-error);
+}
+.az-btn--outline.az-btn--tone-error:not(:disabled):hover,
+.az-btn--dashed.az-btn--tone-error:not(:disabled):hover {
+  background-color: var(--az-color-error-container);
+}
+
+.az-btn--outline.az-btn--tone-success,
+.az-btn--dashed.az-btn--tone-success {
+  border-color: var(--az-color-success);
+  color: var(--az-color-success);
+}
+.az-btn--outline.az-btn--tone-success:not(:disabled):hover,
+.az-btn--dashed.az-btn--tone-success:not(:disabled):hover {
+  background-color: var(--az-color-success-container);
+}
+
+/* Ghost Variant */
+.az-btn--ghost {
+  background-color: transparent;
+}
+.az-btn--ghost.az-btn--tone-neutral { color: var(--az-color-on-surface); }
+.az-btn--ghost.az-btn--tone-neutral:not(:disabled):hover {
+  background-color: var(--az-color-surface-container-high);
+}
+.az-btn--ghost.az-btn--tone-primary { color: var(--az-color-primary); }
+.az-btn--ghost.az-btn--tone-primary:not(:disabled):hover {
+  background-color: var(--az-color-primary-container);
+}
+.az-btn--ghost.az-btn--tone-secondary { color: var(--az-color-secondary); }
+.az-btn--ghost.az-btn--tone-secondary:not(:disabled):hover {
+  background-color: var(--az-color-secondary-container);
+}
+.az-btn--ghost.az-btn--tone-tertiary { color: var(--az-color-on-tertiary-container); }
+.az-btn--ghost.az-btn--tone-tertiary:not(:disabled):hover {
+  background-color: var(--az-color-tertiary-container);
+}
+.az-btn--ghost.az-btn--tone-error { color: var(--az-color-error); }
+.az-btn--ghost.az-btn--tone-error:not(:disabled):hover {
+  background-color: var(--az-color-error-container);
+}
+.az-btn--ghost.az-btn--tone-success { color: var(--az-color-success); }
+.az-btn--ghost.az-btn--tone-success:not(:disabled):hover {
+  background-color: var(--az-color-success-container);
+}
+
+/* Link Variant */
+.az-btn--link {
+  background-color: transparent;
+  padding-left: 12px;
+  padding-right: 12px;
+  text-underline-offset: 4px;
+}
+.az-btn--link.az-btn--tone-primary { color: var(--az-color-primary); }
+.az-btn--link.az-btn--tone-secondary,
+.az-btn--link.az-btn--tone-neutral {
+  color: var(--az-color-on-surface-variant);
+}
+.az-btn--link.az-btn--tone-secondary:not(:disabled):hover,
+.az-btn--link.az-btn--tone-neutral:not(:disabled):hover {
+  color: var(--az-color-on-surface);
+}
+.az-btn--link.az-btn--tone-error { color: var(--az-color-error); }
+.az-btn--link.az-btn--tone-success { color: var(--az-color-success); }
+.az-btn--link:not(:disabled):hover {
+  text-decoration: underline;
+}
+
+/* Disabled States */
+.az-btn:disabled:not(.az-btn--loading) {
+  cursor: not-allowed;
+  filter: none;
+}
+.az-btn:disabled:not(.az-btn--loading).az-aura {
+  box-shadow: none;
+  animation: none;
+}
+.az-btn--solid:disabled:not(.az-btn--loading),
+.az-btn--soft:disabled:not(.az-btn--loading) {
+  background-color: var(--az-color-surface-container-high);
+  color: var(--az-color-on-surface-variant);
+  border-color: transparent;
+}
+.az-btn--outline:disabled:not(.az-btn--loading),
+.az-btn--dashed:disabled:not(.az-btn--loading) {
+  background-color: var(--az-color-surface);
+  border-color: var(--az-color-outline);
+  color: var(--az-color-on-surface-variant);
+}
+.az-btn--ghost:disabled:not(.az-btn--loading),
+.az-btn--link:disabled:not(.az-btn--loading) {
+  background-color: transparent;
+  color: var(--az-color-on-surface-variant);
+  text-decoration: none;
+}
+
+/* Loading State */
+.az-btn--loading {
+  cursor: wait;
+}
+
+.az-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15em;
+  line-height: 1;
+}
+

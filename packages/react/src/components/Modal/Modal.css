@@ -1,0 +1,174 @@
+/* Azurite Modal — Dialog Architecture (Standard, Dialog, Simple, Wide) */
+
+@keyframes az-modal-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes az-modal-backdrop-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes az-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes az-modal-out {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(6px) scale(0.97);
+  }
+}
+
+.az-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  padding: var(--az-space-gutter-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.42);
+  backdrop-filter: blur(4px);
+  animation: az-modal-backdrop-in var(--az-duration-surface-enter) var(--az-ease-surface-enter) forwards;
+}
+
+.az-modal-backdrop--closing {
+  animation: az-modal-backdrop-out var(--az-duration-surface-exit) var(--az-ease-surface-exit) forwards;
+}
+
+.az-modal {
+  position: relative;
+  width: 100%;
+  max-width: 512px;
+  background: var(--az-color-surface);
+  border: 1px solid var(--az-color-outline-variant);
+  border-radius: var(--az-radius-xl);
+  box-shadow: var(--az-shadow-lg);
+  padding: var(--az-space-gutter-lg) var(--az-space-gutter-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--az-space-gutter-lg);
+  color: var(--az-color-on-surface);
+  font-family: var(--az-font-sans);
+  box-sizing: border-box;
+  animation: az-modal-in var(--az-duration-surface-enter) var(--az-ease-surface-enter) forwards;
+}
+
+.az-modal--has-footer {
+  padding-bottom: 20px;
+}
+
+.az-modal--closing {
+  animation: az-modal-out var(--az-duration-surface-exit) var(--az-ease-surface-exit) forwards;
+}
+
+.az-modal--dialog {
+  max-width: 460px;
+}
+
+.az-modal--simple {
+  max-width: 440px;
+  gap: var(--az-space-gutter-md);
+}
+
+.az-modal--wide {
+  max-width: 720px;
+}
+
+.az-modal--sm { max-width: 420px; }
+.az-modal--md { max-width: 512px; }
+.az-modal--lg { max-width: 640px; }
+
+.az-modal__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--az-space-gutter-md);
+}
+
+.az-modal--no-title.az-modal--has-close-icon .az-modal__header {
+  padding-right: 36px;
+}
+
+.az-modal__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--az-space-gutter-md);
+}
+
+.az-modal__close-icon {
+  flex-shrink: 0;
+  margin-top: -2px;
+  margin-right: -8px;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--az-radius-full);
+  border: 0;
+  background: transparent;
+  color: var(--az-color-on-surface-variant);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+              color var(--az-duration-state-change) var(--az-ease-state-change),
+              transform var(--az-duration-spring-press) var(--az-ease-spring-press);
+}
+
+.az-modal__close-icon:hover {
+  background-color: var(--az-color-surface-container-low);
+  color: var(--az-color-on-surface);
+}
+
+.az-modal__close-icon:active {
+  transform: scale(0.92);
+}
+
+.az-modal__close-icon:focus-visible {
+  outline: none;
+  box-shadow: var(--az-focus-ring);
+}
+
+.az-modal__close-icon--floating {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  margin: 0;
+}
+
+.az-modal__title {
+  margin: 0;
+  font-size: var(--az-text-headline-sm-size);
+  line-height: var(--az-text-headline-sm-line);
+  font-weight: var(--az-text-headline-sm-weight);
+  letter-spacing: var(--az-text-headline-sm-tracking);
+  color: var(--az-color-on-surface);
+}
+
+.az-modal__body {
+  margin: 0;
+  font-size: var(--az-text-body-lg-size);
+  line-height: var(--az-text-body-lg-line);
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--az-space-gutter-sm);
+}
+

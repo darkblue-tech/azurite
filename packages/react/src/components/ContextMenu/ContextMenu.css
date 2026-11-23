@@ -1,0 +1,389 @@
+/* Azurite ContextMenu & ContextMenuSurface — Nested Submenus, Accelerators & Selections */
+
+@keyframes az-ctx-enter {
+  from { opacity: 0; transform: scale(0.97) translateY(-4px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes az-ctx-enter-top {
+  from { opacity: 0; transform: translate(-50%, 4px) scale(0.97); }
+  to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
+@keyframes az-ctx-enter-bottom {
+  from { opacity: 0; transform: translate(-50%, -4px) scale(0.97); }
+  to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
+@keyframes az-ctx-enter-left {
+  from { opacity: 0; transform: translate(4px, -50%) scale(0.97); }
+  to { opacity: 1; transform: translate(0, -50%) scale(1); }
+}
+
+@keyframes az-ctx-enter-right {
+  from { opacity: 0; transform: translate(-4px, -50%) scale(0.97); }
+  to { opacity: 1; transform: translate(0, -50%) scale(1); }
+}
+
+@keyframes az-ctx-enter-corner-up {
+  from { opacity: 0; transform: translateY(4px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes az-ctx-enter-corner-down {
+  from { opacity: 0; transform: translateY(-4px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.az-ctxmenu-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.az-ctxmenu__surface {
+  position: relative;
+  width: 200px;
+  padding: 6px;
+  border-radius: var(--az-radius-lg);
+  background-color: var(--az-color-surface);
+  border: 1px solid var(--az-color-outline-variant);
+  box-shadow: var(--az-shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-sizing: border-box;
+  font-family: var(--az-font-sans);
+}
+
+.az-ctxmenu__surface--full {
+  width: 100%;
+}
+
+.az-ctxmenu__surface--compact {
+  width: 152px;
+}
+
+.az-ctxmenu__surface--submenu-beside {
+  width: 184px;
+  margin-top: 28px;
+  animation: az-ctx-enter var(--az-duration-surface-enter) var(--az-ease-surface-enter);
+}
+
+.az-ctxmenu__group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.az-ctxmenu__divider {
+  border: 0;
+  border-top: 1px solid var(--az-color-outline-variant);
+  margin: 4px 0;
+}
+
+.az-ctxmenu__heading {
+  padding: 6px 12px 4px;
+  font-size: var(--az-text-label-sm-size);
+  line-height: var(--az-text-label-sm-line);
+  font-weight: var(--az-text-label-sm-weight);
+  letter-spacing: var(--az-text-label-sm-tracking);
+  color: var(--az-color-on-surface-variant);
+  user-select: none;
+}
+
+.az-ctxmenu__heading--danger {
+  color: var(--az-color-error);
+}
+
+.az-ctxmenu__item-wrap {
+  position: relative;
+}
+
+.az-ctxmenu__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: var(--az-radius-md);
+  background: transparent;
+  color: var(--az-color-on-surface);
+  font-family: var(--az-font-sans);
+  font-size: var(--az-text-body-md-size);
+  line-height: var(--az-text-body-md-line);
+  font-weight: var(--az-text-body-md-weight);
+  text-align: left;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition:
+    background-color var(--az-duration-state-change) var(--az-ease-state-change),
+    color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-ctxmenu__surface--compact .az-ctxmenu__item {
+  padding: 6px 10px;
+  border-radius: var(--az-radius-sm);
+  font-size: var(--az-text-body-sm-size);
+  line-height: var(--az-text-body-sm-line);
+}
+
+.az-ctxmenu__item:hover:not(:disabled) {
+  background-color: var(--az-color-surface-container);
+}
+
+.az-ctxmenu__item:focus-visible {
+  outline: none;
+  background-color: var(--az-color-surface-container);
+  box-shadow: inset 0 0 0 1.5px var(--az-color-primary);
+}
+
+.az-ctxmenu__item--active {
+  background-color: var(--az-color-primary-container);
+  color: var(--az-color-on-primary-container);
+}
+
+.az-ctxmenu__item--active:hover:not(:disabled) {
+  background-color: var(--az-color-primary-container);
+}
+
+.az-ctxmenu__item--destructive {
+  color: var(--az-color-error);
+}
+
+.az-ctxmenu__item--destructive:hover:not(:disabled) {
+  background-color: var(--az-color-error-container);
+  color: var(--az-color-error);
+}
+
+.az-ctxmenu__item:disabled {
+  color: var(--az-color-on-surface-variant);
+  opacity: 0.58;
+  cursor: not-allowed;
+}
+
+.az-ctxmenu__item-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+
+.az-ctxmenu__item-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  color: var(--az-color-on-surface-variant);
+  flex-shrink: 0;
+}
+
+.az-ctxmenu__item-icon--primary {
+  color: var(--az-color-primary);
+}
+
+.az-ctxmenu__item-icon--danger,
+.az-ctxmenu__item--destructive .az-ctxmenu__item-icon {
+  color: var(--az-color-error);
+}
+
+.az-ctxmenu__item-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.az-ctxmenu__shortcut {
+  margin-left: auto;
+  font-family: var(--az-font-sans);
+  font-size: var(--az-text-label-sm-size);
+  line-height: var(--az-text-label-sm-line);
+  font-weight: var(--az-text-label-sm-weight);
+  color: var(--az-color-on-surface-variant);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.az-ctxmenu__item--destructive .az-ctxmenu__shortcut {
+  color: var(--az-color-error);
+}
+
+.az-ctxmenu__caret {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--az-color-on-surface-variant);
+  flex-shrink: 0;
+}
+
+.az-ctxmenu__item--active .az-ctxmenu__caret {
+  color: inherit;
+}
+
+/* Stateful Checkbox & Radio Indicators */
+.az-ctxmenu__checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid var(--az-color-outline);
+  background-color: var(--az-color-surface);
+  color: var(--az-color-on-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  transition:
+    background-color var(--az-duration-state-change) var(--az-ease-state-change),
+    border-color var(--az-duration-state-change) var(--az-ease-state-change),
+    transform var(--az-duration-spring-press) var(--az-ease-spring-press);
+}
+
+.az-ctxmenu__checkbox.is-checked {
+  background-color: var(--az-color-primary);
+  border-color: var(--az-color-primary);
+}
+
+.az-ctxmenu__checkbox-check {
+  display: inline-flex;
+  opacity: 0;
+  transform: scale(0.5);
+  transition:
+    opacity var(--az-duration-state-change) var(--az-ease-state-change),
+    transform var(--az-duration-spring-press) var(--az-ease-spring-press);
+}
+
+.az-ctxmenu__checkbox.is-checked .az-ctxmenu__checkbox-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.az-ctxmenu__radio-ring {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--az-radius-full);
+  border: 2px solid var(--az-color-outline);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  transition: border-color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-ctxmenu__radio-ring.is-checked {
+  border-color: var(--az-color-primary);
+}
+
+.az-ctxmenu__radio-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--az-radius-full);
+  background-color: var(--az-color-primary);
+  transform: scale(0);
+  transition: transform var(--az-duration-spring-press) var(--az-ease-spring-press);
+}
+
+.az-ctxmenu__radio-ring.is-checked .az-ctxmenu__radio-dot {
+  transform: scale(1);
+}
+
+/* Floating Submenu Overlay */
+.az-ctxmenu__submenu-float {
+  position: absolute;
+  top: -6px;
+  left: calc(100% + 6px);
+  z-index: 70;
+  animation: az-ctx-enter var(--az-duration-surface-enter) var(--az-ease-surface-enter);
+}
+
+/* Anchored 8-Placement Trigger Container */
+.az-ctxmenu-anchor {
+  position: relative;
+  display: inline-flex;
+  font-family: var(--az-font-sans);
+}
+
+.az-ctxmenu-anchor--block {
+  display: flex;
+  width: 100%;
+}
+
+.az-ctxmenu-anchor__panel {
+  position: absolute;
+  z-index: 80;
+}
+
+.az-ctxmenu-anchor__panel--top {
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translate(-50%, 0);
+  transform-origin: bottom center;
+  animation: az-ctx-enter-top var(--az-duration-surface-enter) var(--az-ease-surface-enter);
+}
+
+.az-ctxmenu-anchor__panel--bottom {
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translate(-50%, 0);
+  transform-origin: top center;
+  animation: az-ctx-enter-bottom var(--az-duration-surface-enter) var(--az-ease-surface-enter);
+}
+
+.az-ctxmenu-anchor__panel--left {
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translate(0, -50%);
+  transform-origin: right center;
+  animation: az-ctx-enter-left var(--az-duration-surface-enter) var(--az-ease-surface-enter);
+}
+
+.az-ctxmenu-anchor__panel--right {
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translate(0, -50%);
+  transform-origin: left center;
+  animation: az-ctx-enter-right var(--az-duration-surface-enter) var(--az-ease-surface-enter);
+}
+
+.az-ctxmenu-anchor__panel--top-start {
+  bottom: calc(100% + 8px);
+  left: 0;
+  transform-origin: bottom left;
+  animation: az-ctx-enter-corner-up var(--az-duration-surface-enter) var(--az-ease-surface-enter);
+}
+
+.az-ctxmenu-anchor__panel--top-end {
+  bottom: calc(100% + 8px);
+  right: 0;
+  transform-origin: bottom right;
+  animation: az-ctx-enter-corner-up var(--az-duration-surface-enter) var(--az-ease-surface-enter);
+}
+
+.az-ctxmenu-anchor__panel--bottom-start {
+  top: calc(100% + 8px);
+  left: 0;
+  transform-origin: top left;
+  animation: az-ctx-enter-corner-down var(--az-duration-surface-enter) var(--az-ease-surface-enter);
+}
+
+.az-ctxmenu-anchor__panel--bottom-end {
+  top: calc(100% + 8px);
+  right: 0;
+  transform-origin: top right;
+  animation: az-ctx-enter-corner-down var(--az-duration-surface-enter) var(--az-ease-surface-enter);
+}
+
+/* Fixed Portal for Pointer Context Menus */
+.az-ctxmenu-portal {
+  position: fixed;
+  z-index: 160;
+  animation: az-ctx-enter var(--az-duration-surface-enter) var(--az-ease-surface-enter);
+}
+

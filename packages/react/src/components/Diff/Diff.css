@@ -1,0 +1,131 @@
+/* Azurite Diff — Interactive Split Comparison Container */
+
+.az-diff {
+  display: flex;
+  flex-direction: column;
+  gap: var(--az-space-gutter-md);
+  width: 100%;
+}
+
+.az-diff__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--az-space-gutter-md);
+}
+
+.az-diff__labels {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--az-space-gutter-sm);
+  font-size: var(--az-text-label-sm-size);
+  line-height: var(--az-text-label-sm-line);
+  font-weight: var(--az-text-label-sm-weight);
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-diff__readout {
+  font-size: var(--az-text-body-sm-size);
+  line-height: var(--az-text-body-sm-line);
+  font-variant-numeric: tabular-nums;
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-diff__stage {
+  --az-diff-pos: 50%;
+  position: relative;
+  width: 100%;
+  border-radius: var(--az-radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--az-color-outline-variant);
+  background: var(--az-color-surface-container-low);
+  touch-action: none;
+  user-select: none;
+}
+
+.az-diff__after,
+.az-diff__before {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.az-diff__before {
+  clip-path: inset(0 calc(100% - var(--az-diff-pos)) 0 0);
+  will-change: clip-path;
+}
+
+.az-diff__before img,
+.az-diff__after img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+.az-diff__bar {
+  position: absolute;
+  inset-block: 0;
+  left: var(--az-diff-pos);
+  width: 2px;
+  transform: translateX(-50%);
+  background: var(--az-color-outline);
+  box-shadow: var(--az-shadow-sm);
+  cursor: ew-resize;
+  z-index: 5;
+}
+
+.az-diff__bar--contrast {
+  width: 3px;
+  background: #ffffff;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.35), 0 0 12px rgba(15, 23, 42, 0.45);
+}
+
+.az-diff__bar--contrast .az-diff__capsule {
+  width: 14px;
+  height: 44px;
+  background: var(--az-color-primary);
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.28), 0 4px 14px rgba(10, 54, 209, 0.38);
+}
+
+.az-diff__bar::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  left: -14px;
+  right: -14px;
+}
+
+.az-diff__bar:focus-visible {
+  outline: none;
+}
+
+.az-diff__capsule {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 40px;
+  border-radius: var(--az-radius-full);
+  background: var(--az-color-surface);
+  border: 1px solid var(--az-color-outline);
+  box-shadow: var(--az-shadow-md);
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 200ms var(--az-ease-state-change),
+    box-shadow 200ms var(--az-ease-state-change),
+    border-color 200ms var(--az-ease-state-change),
+    background-color 200ms var(--az-ease-state-change);
+}
+
+.az-diff__bar:hover .az-diff__capsule,
+.az-diff__bar:focus-visible .az-diff__capsule,
+.az-diff--dragging .az-diff__capsule {
+  transform: translate(-50%, -50%) scale(1.15);
+  border-color: var(--az-color-primary);
+  box-shadow: 0 0 0 4px rgba(10, 54, 209, 0.18), 0 4px 12px rgba(15, 23, 42, 0.16);
+}
+

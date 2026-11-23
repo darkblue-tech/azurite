@@ -1,0 +1,77 @@
+.az-rating {
+  --az-rating-active: var(--az-color-primary);
+  --az-rating-inactive: var(--az-color-outline-variant);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--az-font-sans);
+}
+
+.az-rating--tone-primary { --az-rating-active: var(--az-color-primary); }
+.az-rating--tone-tertiary { --az-rating-active: var(--az-color-tertiary); }
+.az-rating--tone-warning { --az-rating-active: var(--az-color-warning-indicator); }
+.az-rating--tone-error { --az-rating-active: var(--az-color-error); }
+.az-rating--tone-success { --az-rating-active: var(--az-color-success); }
+
+.az-rating__items {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  outline: none;
+  border-radius: var(--az-radius-sm);
+}
+
+.az-rating__items:focus-visible {
+  box-shadow: var(--az-focus-ring);
+}
+
+.az-rating__item {
+  position: relative;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-rating__item:not(:disabled):hover {
+  transform: scale(1.12);
+}
+
+.az-rating__item:not(:disabled):active {
+  transform: scale(0.95);
+}
+
+.az-rating--readonly .az-rating__item,
+.az-rating__item:disabled {
+  cursor: default;
+}
+
+.az-rating--readonly .az-rating__item:hover {
+  transform: none;
+}
+
+.az-rating--disabled {
+  opacity: 0.5;
+}
+
+.az-rating__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.az-rating__value {
+  min-width: 32px;
+  text-align: right;
+  font-size: var(--az-text-label-md-size);
+  line-height: var(--az-text-label-md-line);
+  font-weight: var(--az-text-label-md-weight);
+  font-variant-numeric: tabular-nums;
+  color: var(--az-color-on-surface);
+}
+

@@ -1,0 +1,288 @@
+.az-stepper {
+  font-family: var(--az-font-sans);
+  width: 100%;
+}
+
+/* Horizontal Numbered Stepper */
+.az-stepper--horizontal {
+  display: grid;
+  align-items: start;
+}
+
+.az-step-h {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font-family: var(--az-font-sans);
+}
+
+.az-step-h--interactive {
+  cursor: pointer;
+}
+
+.az-step-h:focus-visible {
+  outline: none;
+}
+
+.az-step-h:focus-visible .az-step__node {
+  box-shadow: var(--az-focus-ring);
+}
+
+.az-step-h__rail {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.az-step-h__line {
+  flex: 1 1 0%;
+  height: 2px;
+  background-color: var(--az-color-outline-variant);
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-step-h__line--active {
+  background-color: var(--az-color-primary);
+}
+
+.az-step-h__line--hidden {
+  background-color: transparent;
+}
+
+.az-step__node {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--az-radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: var(--az-text-label-md-size);
+  line-height: var(--az-text-label-md-line);
+  font-weight: var(--az-text-label-md-weight);
+  font-variant-numeric: tabular-nums;
+  transition: all var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-step__node--completed {
+  background-color: var(--az-color-primary);
+  color: var(--az-color-on-primary);
+}
+
+.az-step__node--active {
+  background-color: var(--az-color-primary);
+  color: var(--az-color-on-primary);
+  box-shadow: 0 0 0 4px var(--az-color-primary-container);
+}
+
+.az-step__node--upcoming {
+  background-color: var(--az-color-surface);
+  border: 1px solid var(--az-color-outline);
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-step__node--error {
+  background-color: var(--az-color-error);
+  color: var(--az-color-on-error);
+}
+
+.az-step-h__title {
+  font-size: var(--az-text-label-md-size);
+  line-height: var(--az-text-label-md-line);
+  font-weight: var(--az-text-label-md-weight);
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-step-h--completed .az-step-h__title {
+  color: var(--az-color-on-surface);
+}
+
+.az-step-h--active .az-step-h__title {
+  color: var(--az-color-primary);
+}
+
+.az-step-h__desc {
+  font-size: var(--az-text-body-sm-size);
+  line-height: var(--az-text-body-sm-line);
+  color: var(--az-color-on-surface-variant);
+}
+
+/* Vertical Stepper */
+.az-stepper--vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+.az-step-v {
+  display: flex;
+  gap: 16px;
+}
+
+.az-step-v__rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.az-step-v .az-step__node {
+  width: 32px;
+  height: 32px;
+}
+
+.az-step-v__line {
+  width: 2px;
+  flex: 1 1 0%;
+  min-height: 28px;
+  margin: 6px 0;
+  background-color: var(--az-color-outline-variant);
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-step-v__line--active {
+  background-color: var(--az-color-primary);
+}
+
+.az-step-v__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 24px;
+}
+
+.az-step-v:last-child .az-step-v__body {
+  padding-bottom: 0;
+}
+
+.az-step-v__title {
+  font-size: var(--az-text-title-md-size);
+  line-height: var(--az-text-title-md-line);
+  font-weight: var(--az-text-title-md-weight);
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-step-v--completed .az-step-v__title {
+  color: var(--az-color-on-surface);
+}
+
+.az-step-v--active .az-step-v__title {
+  color: var(--az-color-primary);
+}
+
+.az-step-v__desc {
+  margin: 0;
+  font-size: var(--az-text-body-md-size);
+  line-height: var(--az-text-body-md-line);
+  color: var(--az-color-on-surface-variant);
+}
+
+/* Responsive Icon Stepper */
+.az-stepper--icon {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .az-stepper--icon.az-stepper--responsive {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.az-stepper--icon:not(.az-stepper--responsive).az-stepper--horizontal-icon {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.az-step-i {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px 8px 10px;
+  border-radius: var(--az-radius-full);
+  border: 0;
+  background: transparent;
+  text-align: left;
+  font-family: var(--az-font-sans);
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+              color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-step-i--interactive {
+  cursor: pointer;
+}
+
+.az-step-i--active {
+  background-color: var(--az-color-primary-container);
+}
+
+.az-step-i:focus-visible {
+  outline: none;
+  box-shadow: var(--az-focus-ring);
+}
+
+.az-step-i .az-step__node {
+  width: 40px;
+  height: 40px;
+}
+
+.az-step-i__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.az-step-i__title {
+  font-size: var(--az-text-title-md-size);
+  line-height: var(--az-text-title-md-line);
+  font-weight: var(--az-text-title-md-weight);
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-step-i--completed .az-step-i__title {
+  color: var(--az-color-on-surface);
+}
+
+.az-step-i--active .az-step-i__title {
+  color: var(--az-color-primary);
+}
+
+.az-step-i__desc {
+  font-size: var(--az-text-body-sm-size);
+  line-height: var(--az-text-body-sm-line);
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-step-i--active .az-step-i__desc {
+  color: var(--az-color-on-primary-container);
+}
+
+.az-step-i__connector {
+  display: none;
+  flex: 1 1 0%;
+  height: 2px;
+  border-radius: var(--az-radius-full);
+  background-color: var(--az-color-outline-variant);
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-step-i__connector--active {
+  background-color: var(--az-color-primary);
+}
+
+@media (min-width: 768px) {
+  .az-stepper--responsive .az-step-i__connector {
+    display: block;
+  }
+}
+
+.az-stepper--horizontal-icon .az-step-i__connector {
+  display: block;
+}
+

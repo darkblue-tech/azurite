@@ -1,0 +1,225 @@
+/* Azurite Menu — Vertical, Horizontal, Icon-Only, 5 Sizes, Badges & Nested Collapsible Trees */
+
+.az-menu {
+  background: var(--az-color-surface);
+  border: 1px solid var(--az-color-outline-variant);
+  border-radius: var(--az-radius-md);
+  padding: 8px;
+  color: var(--az-color-on-surface);
+  font-family: var(--az-font-sans);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.az-menu--horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.az-menu--icon-only {
+  width: fit-content;
+}
+
+.az-menu--uncontained {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.az-menu__header {
+  padding: 6px 12px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--az-color-outline-variant);
+  font-size: var(--az-text-label-sm-size);
+  line-height: var(--az-text-label-sm-line);
+  font-weight: var(--az-text-label-sm-weight);
+  letter-spacing: var(--az-text-label-sm-tracking);
+  color: var(--az-color-on-surface-variant);
+}
+
+.az-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.az-menu--horizontal > .az-menu__list {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  width: auto;
+}
+
+.az-menu__item {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--az-color-on-surface-variant);
+  font-family: var(--az-font-sans);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+    color var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-menu--horizontal .az-menu__item {
+  width: auto;
+}
+
+.az-menu__item-lead {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+/* Proportional Size Tiers (XS -> XL) */
+.az-menu--xs .az-menu__item {
+  padding: 4px 8px;
+  border-radius: var(--az-radius-sm);
+  font-size: var(--az-text-body-sm-size);
+  line-height: var(--az-text-body-sm-line);
+}
+
+.az-menu--sm .az-menu__item {
+  padding: 6px 10px;
+  border-radius: var(--az-radius-sm);
+  font-size: var(--az-text-body-sm-size);
+  line-height: var(--az-text-body-sm-line);
+}
+
+.az-menu--md .az-menu__item {
+  padding: 8px 12px;
+  border-radius: var(--az-radius-sm);
+  font-size: var(--az-text-body-md-size);
+  line-height: var(--az-text-body-md-line);
+}
+
+.az-menu--lg .az-menu__item {
+  padding: 10px 14px;
+  border-radius: var(--az-radius-sm);
+  font-size: var(--az-text-body-lg-size);
+  line-height: var(--az-text-body-lg-line);
+}
+
+.az-menu--xl .az-menu__item {
+  padding: 12px 16px;
+  border-radius: var(--az-radius-md);
+  font-size: var(--az-text-body-lg-size);
+  line-height: var(--az-text-body-lg-line);
+}
+
+/* Horizontal pill items slightly wider padding in MD default */
+.az-menu--horizontal:not(.az-menu--icon-only) .az-menu__item {
+  padding-inline: 16px;
+}
+
+/* Icon-only square triggers */
+.az-menu--icon-only .az-menu__item {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  justify-content: center;
+  border-radius: var(--az-radius-sm);
+}
+
+.az-menu__item:hover:not(:disabled):not(.az-menu__item--active) {
+  background: var(--az-color-surface-container);
+  color: var(--az-color-on-surface);
+}
+
+.az-menu__item--active {
+  background: var(--az-color-primary-container);
+  color: var(--az-color-on-primary-container);
+  font-weight: var(--az-text-label-md-weight);
+}
+
+.az-menu--solid .az-menu__item--active {
+  background: var(--az-color-primary);
+  color: var(--az-color-on-primary);
+}
+
+.az-menu--xs .az-menu__item--active,
+.az-menu--sm .az-menu__item--active {
+  font-size: var(--az-text-label-sm-size);
+  line-height: var(--az-text-label-sm-line);
+}
+
+.az-menu--lg .az-menu__item--active {
+  font-size: var(--az-text-label-lg-size);
+  line-height: var(--az-text-label-lg-line);
+}
+
+.az-menu--xl .az-menu__item--active {
+  font-size: var(--az-text-title-md-size);
+  line-height: var(--az-text-title-md-line);
+}
+
+.az-menu__item:disabled,
+.az-menu__item--disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.az-menu__item:focus-visible {
+  outline: none;
+  box-shadow: var(--az-focus-ring);
+}
+
+/* Collapsible Subtree Branch */
+.az-menu__chevron {
+  display: inline-flex;
+  flex-shrink: 0;
+  transition: transform var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-menu__chevron--expanded {
+  transform: rotate(180deg);
+}
+
+.az-menu__branch {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--az-duration-surface-enter) var(--az-ease-surface-enter);
+}
+
+.az-menu__branch--expanded {
+  grid-template-rows: 1fr;
+}
+
+.az-menu__branch-inner {
+  overflow: hidden;
+}
+
+.az-menu__sublist {
+  list-style: none;
+  margin: 4px 0 0 12px;
+  padding: 0 0 0 12px;
+  border-left: 1px solid var(--az-color-outline-variant);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.az-menu__parent-trigger {
+  color: var(--az-color-on-surface);
+  font-weight: var(--az-text-label-md-weight);
+  font-size: var(--az-text-label-md-size);
+  line-height: var(--az-text-label-md-line);
+}
+

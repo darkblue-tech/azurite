@@ -1,0 +1,211 @@
+.az-field-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--az-font-sans);
+  font-size: var(--az-text-label-md-size);
+  line-height: var(--az-text-label-md-line);
+  font-weight: var(--az-text-label-md-weight);
+  letter-spacing: var(--az-text-label-md-tracking);
+  color: var(--az-color-on-surface);
+}
+
+.az-field-label--sm {
+  font-size: var(--az-text-label-sm-size);
+  line-height: var(--az-text-label-sm-line);
+  letter-spacing: var(--az-text-label-sm-tracking);
+}
+.az-field-label--lg {
+  font-size: var(--az-text-label-lg-size);
+  line-height: var(--az-text-label-lg-line);
+  letter-spacing: var(--az-text-label-lg-tracking);
+}
+
+.az-field-label--muted { color: var(--az-color-on-surface-variant); }
+.az-field-label--primary { color: var(--az-color-primary); }
+.az-field-label--error { color: var(--az-color-error); }
+.az-field-label--success { color: var(--az-color-success); }
+
+.az-field-label__req {
+  color: var(--az-color-error);
+}
+
+/* Addon Group (Start/End edge boxed labels) */
+.az-addon-group {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  background-color: var(--az-color-surface);
+  border: 1px solid var(--az-color-outline);
+  overflow: hidden;
+  transition: background-color var(--az-duration-state-change) var(--az-ease-state-change),
+              border-color var(--az-duration-state-change) var(--az-ease-state-change),
+              box-shadow var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-addon-group:focus-within:not(.az-addon-group--disabled) {
+  border-color: var(--az-color-primary);
+  box-shadow: var(--az-focus-halo);
+}
+
+.az-addon-group--valid { border-color: var(--az-color-success); }
+.az-addon-group--valid:focus-within:not(.az-addon-group--disabled) {
+  border-color: var(--az-color-success);
+  box-shadow: var(--az-success-halo);
+}
+.az-addon-group--invalid { border-color: var(--az-color-error); }
+.az-addon-group--invalid:focus-within:not(.az-addon-group--disabled) {
+  border-color: var(--az-color-error);
+  box-shadow: var(--az-error-halo);
+}
+.az-addon-group--disabled {
+  background-color: var(--az-color-surface-container);
+  border-color: var(--az-color-outline-variant);
+  cursor: not-allowed;
+}
+
+.az-addon-group--xs { height: 28px; border-radius: var(--az-radius-sm); }
+.az-addon-group--sm { height: 32px; border-radius: var(--az-radius-sm); }
+.az-addon-group--md { height: 40px; border-radius: var(--az-radius-md); }
+.az-addon-group--lg { height: 48px; border-radius: var(--az-radius-md); }
+.az-addon-group--xl { height: 56px; border-radius: var(--az-radius-lg); }
+
+.az-addon-group__slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 12px;
+  background-color: var(--az-color-surface-container);
+  color: var(--az-color-on-surface-variant);
+  font-family: var(--az-font-sans);
+  font-size: var(--az-text-label-md-size);
+  line-height: var(--az-text-label-md-line);
+  font-weight: var(--az-text-label-md-weight);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.az-addon-group__slot--start {
+  border-right: 1px solid var(--az-color-outline-variant);
+}
+
+.az-addon-group__slot--end {
+  border-left: 1px solid var(--az-color-outline-variant);
+}
+
+.az-addon-group__slot--success {
+  background-color: var(--az-color-success-container);
+  color: var(--az-color-on-success-container);
+  border-color: var(--az-color-success-border);
+}
+
+.az-addon-group__slot--error {
+  background-color: var(--az-color-error-container);
+  color: var(--az-color-on-error-container);
+}
+
+.az-addon-group__slot--primary {
+  background-color: var(--az-color-primary-container);
+  color: var(--az-color-on-primary-container);
+}
+
+.az-addon-group__control {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.az-addon-group__control input,
+.az-addon-group__control select {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0 12px;
+  color: var(--az-color-on-surface);
+  font-family: var(--az-font-sans);
+  font-size: var(--az-text-body-md-size);
+  outline: none;
+}
+
+/* Floating Label Wrapper */
+.az-float-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.az-float-label {
+  position: absolute;
+  pointer-events: none;
+  left: 12px;
+  top: -8px;
+  padding: 0 4px;
+  background-color: var(--az-color-surface);
+  font-family: var(--az-font-sans);
+  font-size: var(--az-text-label-sm-size);
+  line-height: var(--az-text-label-sm-line);
+  font-weight: var(--az-text-label-sm-weight);
+  letter-spacing: var(--az-text-label-sm-tracking);
+  color: var(--az-color-primary);
+  transition: top var(--az-duration-state-change) var(--az-ease-state-change),
+              font-size var(--az-duration-state-change) var(--az-ease-state-change),
+              color var(--az-duration-state-change) var(--az-ease-state-change),
+              transform var(--az-duration-state-change) var(--az-ease-state-change);
+}
+
+.az-float-wrap--xs .az-float-label { left: 10px; top: -7px; }
+.az-float-wrap--sm .az-float-label { left: 12px; top: -7px; }
+.az-float-wrap--md .az-float-label { left: 12px; top: -8px; }
+.az-float-wrap--lg .az-float-label {
+  left: 12px;
+  top: -9px;
+  font-size: var(--az-text-label-md-size);
+  line-height: var(--az-text-label-md-line);
+}
+.az-float-wrap--xl .az-float-label {
+  left: 16px;
+  top: -9px;
+  padding: 0 6px;
+  font-size: var(--az-text-label-md-size);
+  line-height: var(--az-text-label-md-line);
+}
+
+/* Resting (empty & not focused) */
+.az-float-wrap--empty:not(:focus-within) .az-float-label {
+  color: var(--az-color-on-surface-variant);
+}
+.az-float-wrap--xs.az-float-wrap--empty:not(:focus-within) .az-float-label { top: 6px; }
+.az-float-wrap--sm.az-float-wrap--empty:not(:focus-within) .az-float-label { top: 8px; }
+.az-float-wrap--md.az-float-wrap--empty:not(:focus-within) .az-float-label { top: 10px; }
+.az-float-wrap--lg.az-float-wrap--empty:not(:focus-within) .az-float-label { top: 14px; }
+.az-float-wrap--xl.az-float-wrap--empty:not(:focus-within) .az-float-label { top: 17px; }
+
+/* Responsive adaptive floating label: SM -> MD -> LG */
+@media (min-width: 768px) {
+  .az-float-wrap--responsive .az-float-label {
+    left: 12px;
+    top: -9px;
+    font-size: var(--az-text-label-md-size);
+    line-height: var(--az-text-label-md-line);
+  }
+  .az-float-wrap--responsive.az-float-wrap--empty:not(:focus-within) .az-float-label {
+    top: 10px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .az-float-wrap--responsive.az-float-wrap--empty:not(:focus-within) .az-float-label {
+    top: 14px;
+  }
+}
+
+.az-float-wrap--invalid .az-float-label {
+  color: var(--az-color-error);
+}
+.az-float-wrap--valid .az-float-label {
+  color: var(--az-color-success);
+}
+

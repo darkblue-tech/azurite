@@ -1,0 +1,241 @@
+.az-loader {
+  --az-loader-speed-mult: 1;
+  --az-loader-play-state: running;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 1em;
+  height: 1em;
+  color: currentColor;
+}
+
+/* Sizes */
+.az-loader--xs { font-size: 16px; }
+.az-loader--sm { font-size: 24px; }
+.az-loader--md { font-size: 32px; }
+.az-loader--lg { font-size: 44px; }
+.az-loader--xl { font-size: 56px; }
+
+/* Tones */
+.az-loader--tone-current { color: currentColor; }
+.az-loader--tone-primary { color: var(--az-color-primary); }
+.az-loader--tone-secondary { color: var(--az-color-secondary); }
+.az-loader--tone-tertiary { color: var(--az-color-tertiary); }
+.az-loader--tone-neutral { color: var(--az-color-on-surface-variant); }
+.az-loader--tone-success { color: var(--az-color-success); }
+.az-loader--tone-warning { color: var(--az-color-warning); }
+.az-loader--tone-error { color: var(--az-color-error); }
+
+.az-loader__svg {
+  width: 1em;
+  height: 1em;
+  display: block;
+}
+
+.az-loader__spin {
+  animation: az-spin calc(0.9s * var(--az-loader-speed-mult)) linear infinite;
+  animation-play-state: var(--az-loader-play-state);
+}
+
+/* Dots */
+.az-loader__dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.18em;
+}
+.az-loader__dot {
+  width: 0.25em;
+  height: 0.25em;
+  border-radius: var(--az-radius-full);
+  background-color: currentColor;
+}
+.az-loader__dot--1 {
+  animation: az-dot-pulse calc(1.2s * var(--az-loader-speed-mult)) ease-in-out infinite 0s;
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__dot--2 {
+  animation: az-dot-pulse calc(1.2s * var(--az-loader-speed-mult)) ease-in-out infinite calc(0.18s * var(--az-loader-speed-mult));
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__dot--3 {
+  animation: az-dot-pulse calc(1.2s * var(--az-loader-speed-mult)) ease-in-out infinite calc(0.36s * var(--az-loader-speed-mult));
+  animation-play-state: var(--az-loader-play-state);
+}
+
+/* Circles (Counter-Rotating Concentric Rings) */
+.az-loader__circles {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.az-loader__circle-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--az-radius-full);
+  border: max(2px, 0.06em) solid transparent;
+  border-top-color: currentColor;
+  border-bottom-color: currentColor;
+  animation: az-spin calc(1.4s * var(--az-loader-speed-mult)) linear infinite;
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__circle-inner {
+  width: 0.54em;
+  height: 0.54em;
+  border-radius: var(--az-radius-full);
+  border: max(2px, 0.055em) solid transparent;
+  border-left-color: var(--az-color-tertiary);
+  border-right-color: var(--az-color-tertiary);
+  animation: az-spin-reverse calc(1.1s * var(--az-loader-speed-mult)) linear infinite;
+  animation-play-state: var(--az-loader-play-state);
+}
+
+/* Balls (Spring Bouncing Spheres) */
+.az-loader__balls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.18em;
+  padding-top: 0.16em;
+}
+.az-loader__ball {
+  width: 0.3em;
+  height: 0.3em;
+  border-radius: var(--az-radius-full);
+  background-color: currentColor;
+}
+.az-loader__ball--1 {
+  animation: az-ball-bounce calc(1.1s * var(--az-loader-speed-mult)) var(--az-ease-spring-press) infinite 0s;
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__ball--2 {
+  animation: az-ball-bounce calc(1.1s * var(--az-loader-speed-mult)) var(--az-ease-spring-press) infinite calc(0.16s * var(--az-loader-speed-mult));
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__ball--3 {
+  animation: az-ball-bounce calc(1.1s * var(--az-loader-speed-mult)) var(--az-ease-spring-press) infinite calc(0.32s * var(--az-loader-speed-mult));
+  animation-play-state: var(--az-loader-play-state);
+}
+
+/* Bars */
+.az-loader__bars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.13em;
+  height: 1em;
+}
+.az-loader__bar {
+  width: 0.18em;
+  height: 1em;
+  border-radius: var(--az-radius-full);
+  background-color: currentColor;
+  transform-origin: center;
+}
+.az-loader__bar--1 {
+  animation: az-bar-wave calc(1.1s * var(--az-loader-speed-mult)) ease-in-out infinite 0s;
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__bar--2 {
+  animation: az-bar-wave calc(1.1s * var(--az-loader-speed-mult)) ease-in-out infinite calc(0.14s * var(--az-loader-speed-mult));
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__bar--3 {
+  animation: az-bar-wave calc(1.1s * var(--az-loader-speed-mult)) ease-in-out infinite calc(0.28s * var(--az-loader-speed-mult));
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__bar--4 {
+  animation: az-bar-wave calc(1.1s * var(--az-loader-speed-mult)) ease-in-out infinite calc(0.42s * var(--az-loader-speed-mult));
+  animation-play-state: var(--az-loader-play-state);
+}
+
+/* Pulse Wave */
+.az-loader__wave-wrap {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.az-loader__wave {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--az-radius-full);
+  background-color: currentColor;
+}
+.az-loader__wave--1 {
+  opacity: 0.5;
+  animation: az-pulse-wave calc(1.6s * var(--az-loader-speed-mult)) cubic-bezier(0.1, 0.7, 0.2, 1) infinite 0s;
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__wave--2 {
+  opacity: 0.4;
+  animation: az-pulse-wave calc(1.6s * var(--az-loader-speed-mult)) cubic-bezier(0.1, 0.7, 0.2, 1) infinite calc(0.55s * var(--az-loader-speed-mult));
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__wave-core {
+  width: 0.3em;
+  height: 0.3em;
+  border-radius: var(--az-radius-full);
+  background-color: currentColor;
+}
+
+/* Expanding Ring */
+.az-loader__ring-wrap {
+  position: relative;
+  width: 1em;
+  height: 1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.az-loader__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--az-radius-full);
+  border: max(2px, 0.06em) solid currentColor;
+}
+.az-loader__ring--1 {
+  animation: az-ring-expand calc(1.4s * var(--az-loader-speed-mult)) cubic-bezier(0.2, 0.8, 0.2, 1) infinite 0s;
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__ring--2 {
+  animation: az-ring-expand calc(1.4s * var(--az-loader-speed-mult)) cubic-bezier(0.2, 0.8, 0.2, 1) infinite calc(0.45s * var(--az-loader-speed-mult));
+  animation-play-state: var(--az-loader-play-state);
+}
+
+/* Spokes */
+.az-loader__spoke-1 {
+  animation: az-spoke-fade calc(1s * var(--az-loader-speed-mult)) linear infinite 0s;
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__spoke-2 {
+  animation: az-spoke-fade calc(1s * var(--az-loader-speed-mult)) linear infinite calc(-0.875s * var(--az-loader-speed-mult));
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__spoke-3 {
+  animation: az-spoke-fade calc(1s * var(--az-loader-speed-mult)) linear infinite calc(-0.75s * var(--az-loader-speed-mult));
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__spoke-4 {
+  animation: az-spoke-fade calc(1s * var(--az-loader-speed-mult)) linear infinite calc(-0.625s * var(--az-loader-speed-mult));
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__spoke-5 {
+  animation: az-spoke-fade calc(1s * var(--az-loader-speed-mult)) linear infinite calc(-0.5s * var(--az-loader-speed-mult));
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__spoke-6 {
+  animation: az-spoke-fade calc(1s * var(--az-loader-speed-mult)) linear infinite calc(-0.375s * var(--az-loader-speed-mult));
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__spoke-7 {
+  animation: az-spoke-fade calc(1s * var(--az-loader-speed-mult)) linear infinite calc(-0.25s * var(--az-loader-speed-mult));
+  animation-play-state: var(--az-loader-play-state);
+}
+.az-loader__spoke-8 {
+  animation: az-spoke-fade calc(1s * var(--az-loader-speed-mult)) linear infinite calc(-0.125s * var(--az-loader-speed-mult));
+  animation-play-state: var(--az-loader-play-state);
+}

@@ -1,0 +1,364 @@
+/* Azurite PhoneMockup — Flagship Mobile Chassis & Viewport Frame */
+
+.az-phone {
+  --az-phone-width: 316px;
+  --az-phone-height: 644px;
+  --az-phone-radius: 44px;
+  --az-phone-screen-radius: 34px;
+  --az-phone-shell-bg: #111827;
+  --az-phone-shell-ring: #334155;
+  --az-phone-bezel-bg: #090d14;
+  --az-phone-key-bg: #1e293b;
+
+  --az-phone-screen-bg: #ffffff;
+  --az-phone-screen-ink: #0f172a;
+
+  position: relative;
+  width: var(--az-phone-width);
+  height: var(--az-phone-height);
+  max-width: 100%;
+  border-radius: var(--az-phone-radius);
+  padding: 4px;
+  background: linear-gradient(145deg, var(--az-phone-shell-ring), var(--az-phone-shell-bg));
+  box-shadow: var(--az-shadow-lg);
+  box-sizing: border-box;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+/* Sizes */
+.az-phone--size-sm.az-phone--portrait {
+  --az-phone-width: 268px;
+  --az-phone-height: 548px;
+  --az-phone-radius: 38px;
+  --az-phone-screen-radius: 28px;
+}
+
+.az-phone--size-md.az-phone--portrait {
+  --az-phone-width: 316px;
+  --az-phone-height: 644px;
+  --az-phone-radius: 44px;
+  --az-phone-screen-radius: 34px;
+}
+
+.az-phone--size-lg.az-phone--portrait {
+  --az-phone-width: 360px;
+  --az-phone-height: 732px;
+  --az-phone-radius: 46px;
+  --az-phone-screen-radius: 36px;
+}
+
+.az-phone--size-sm.az-phone--landscape {
+  --az-phone-width: 512px;
+  --az-phone-height: 258px;
+  --az-phone-radius: 38px;
+  --az-phone-screen-radius: 28px;
+}
+
+.az-phone--size-md.az-phone--landscape {
+  --az-phone-width: 580px;
+  --az-phone-height: 292px;
+  --az-phone-radius: 42px;
+  --az-phone-screen-radius: 32px;
+}
+
+.az-phone--size-lg.az-phone--landscape {
+  --az-phone-width: 640px;
+  --az-phone-height: 324px;
+  --az-phone-radius: 44px;
+  --az-phone-screen-radius: 34px;
+}
+
+/* Finishes */
+.az-phone--finish-obsidian {
+  --az-phone-shell-bg: #0f172a;
+  --az-phone-shell-ring: #334155;
+  --az-phone-bezel-bg: #06090f;
+  --az-phone-key-bg: #334155;
+}
+
+.az-phone--finish-titanium {
+  --az-phone-shell-bg: #64748b;
+  --az-phone-shell-ring: #94a3b8;
+  --az-phone-bezel-bg: #0b0f17;
+  --az-phone-key-bg: #94a3b8;
+}
+
+.az-phone--finish-silver {
+  --az-phone-shell-bg: #cbd5e1;
+  --az-phone-shell-ring: #e2e8f0;
+  --az-phone-bezel-bg: #0f172a;
+  --az-phone-key-bg: #cbd5e1;
+}
+
+.az-phone--finish-azurite {
+  --az-phone-shell-bg: #062185;
+  --az-phone-shell-ring: #2563eb;
+  --az-phone-bezel-bg: #070d1f;
+  --az-phone-key-bg: #1d4ed8;
+}
+
+/* Screen Polarity */
+[data-theme='dark'] .az-phone--theme-auto,
+.dark .az-phone--theme-auto,
+.az-phone--theme-dark {
+  --az-phone-screen-bg: #0f141c;
+  --az-phone-screen-ink: #f8fafc;
+}
+
+[data-theme='dark'] .az-phone--theme-light,
+.dark .az-phone--theme-light {
+  --az-phone-screen-bg: #ffffff;
+  --az-phone-screen-ink: #0f172a;
+}
+
+/* Hardware Buttons */
+.az-phone__hardware-keys {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.az-phone__key {
+  position: absolute;
+  background-color: var(--az-phone-key-bg);
+  border-radius: 2px;
+}
+
+.az-phone--portrait .az-phone__key--silent {
+  left: -3px;
+  top: 96px;
+  width: 3px;
+  height: 22px;
+}
+
+.az-phone--portrait .az-phone__key--vol-up {
+  left: -3px;
+  top: 136px;
+  width: 3px;
+  height: 44px;
+}
+
+.az-phone--portrait .az-phone__key--vol-down {
+  left: -3px;
+  top: 192px;
+  width: 3px;
+  height: 44px;
+}
+
+.az-phone--portrait .az-phone__key--power {
+  right: -3px;
+  top: 152px;
+  width: 3px;
+  height: 66px;
+}
+
+.az-phone--landscape .az-phone__key--silent {
+  top: -3px;
+  left: 96px;
+  width: 22px;
+  height: 3px;
+}
+
+.az-phone--landscape .az-phone__key--vol-up {
+  top: -3px;
+  left: 134px;
+  width: 44px;
+  height: 3px;
+}
+
+.az-phone--landscape .az-phone__key--vol-down {
+  top: -3px;
+  left: 190px;
+  width: 44px;
+  height: 3px;
+}
+
+.az-phone--landscape .az-phone__key--power {
+  bottom: -3px;
+  left: 150px;
+  width: 66px;
+  height: 3px;
+}
+
+/* Inner Bezel & Screen */
+.az-phone__bezel {
+  width: 100%;
+  height: 100%;
+  padding: 6px;
+  border-radius: calc(var(--az-phone-radius) - 4px);
+  background-color: var(--az-phone-bezel-bg);
+  box-sizing: border-box;
+}
+
+.az-phone__screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--az-phone-screen-radius);
+  background-color: var(--az-phone-screen-bg);
+  color: var(--az-phone-screen-ink);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cutouts */
+.az-phone__cutout {
+  position: relative;
+  z-index: 4;
+  background-color: #06090f;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.az-phone--portrait .az-phone__cutout--dynamic-island {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 86px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: var(--az-radius-full);
+}
+
+.az-phone--portrait .az-phone__cutout--notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 122px;
+  height: 24px;
+  padding: 0 10px;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+.az-phone--portrait .az-phone__cutout--punch-hole {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px #1e293b;
+}
+
+.az-phone--landscape .az-phone__cutout--dynamic-island {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 82px;
+  padding: 7px 0;
+  flex-direction: column;
+  border-radius: var(--az-radius-full);
+}
+
+.az-phone--landscape .az-phone__cutout--notch {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 112px;
+  padding: 10px 0;
+  flex-direction: column;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+.az-phone--landscape .az-phone__cutout--punch-hole {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px #1e293b;
+}
+
+.az-phone__camera-lens {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #38bdf8 0%, #0f172a 65%);
+  box-shadow: 0 0 0 1.5px #1e293b;
+}
+
+/* Status Bar */
+.az-phone__status-bar {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 22px 6px;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 600;
+  color: var(--az-phone-screen-ink);
+  flex-shrink: 0;
+}
+
+.az-phone--landscape .az-phone__status-bar {
+  padding: 10px 26px 4px;
+}
+
+.az-phone__time {
+  font-variant-numeric: tabular-nums;
+}
+
+.az-phone__status-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.az-phone__battery-icon {
+  transform: rotate(90deg);
+}
+
+/* Scrollable Screen Content */
+.az-phone__content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.az-phone__content::-webkit-scrollbar {
+  display: none;
+}
+
+.az-phone--landscape .az-phone__content--pad-sm,
+.az-phone--landscape .az-phone__content--pad-md {
+  padding-left: 38px;
+}
+
+.az-phone__content--pad-none { padding: 0; }
+.az-phone__content--pad-sm { padding: 10px 12px; }
+.az-phone__content--pad-md { padding: 14px 16px; }
+
+/* Home Indicator */
+.az-phone__home-indicator {
+  display: flex;
+  justify-content: center;
+  padding: 6px 0 8px;
+  flex-shrink: 0;
+}
+
+.az-phone__home-bar {
+  width: 108px;
+  height: 4px;
+  border-radius: var(--az-radius-full);
+  background-color: color-mix(in srgb, var(--az-phone-screen-ink) 26%, transparent);
+}
